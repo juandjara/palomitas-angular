@@ -10,6 +10,25 @@
       <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
       Always a pleasure scaffolding your apps.
     </p>
+    <button class="btn btn-success" ng-click="vm.showlist()">
+      Get shows
+    </button>
+    <div style="text-align: left" ng-show="vm.showData">
+      <p>Shows: Page 1</p>
+      <div class="image-row">
+        <div ng-repeat="show in vm.showData | limitTo: 18">
+          <img ng-src="{{show.images.poster}}"
+               alt="Poster de {{show.title}}">          
+        </div>
+      </div>
+    </div>
+    <div style="text-align: left" ng-show="vm.error">
+      <p>Error</p>
+      <pre>
+        {{vm.error | json}}
+      </pre>
+    </div>
+    
   </div>
 
 </div>

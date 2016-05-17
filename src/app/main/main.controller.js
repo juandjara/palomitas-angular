@@ -6,16 +6,32 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(toastr) {
+  function MainController(toastr, $http) {
     var vm = this;
+    var api = "https://api-fetch.website/tv"
 
     vm.creationDate = 1463518051145;
+    vm.showData = null;
+    vm.error = null;
+
     vm.showToastr = showToastr;
+    vm.showlist = showlist;
 
     activate();
 
     function activate() {
       
+    }
+
+    function showlist(){
+      $http.get(api+"/shows/1")
+        .then(function(res){
+          vm.showData = res.data;
+          vm.error = null;
+        })
+        .catch(function(err){
+          vm.error = err;
+        });
     }
 
     function showToastr() {
