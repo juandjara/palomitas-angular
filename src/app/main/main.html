@@ -16,9 +16,13 @@
     <div style="text-align: left" ng-show="vm.showData">
       <p>Shows: Page 1</p>
       <div class="image-row">
-        <div ng-repeat="show in vm.showData | limitTo: 18">
-          <img ng-src="{{show.images.poster}}"
-               alt="Poster de {{show.title}}">          
+        <div class="wrapper" ng-repeat="show in vm.showData | limitTo: 18"
+             ng-style="{'background-image': 'url({{show.images.poster}})', 'background-size': 'cover' }">
+          <div class="overlay">
+            <a ng-href="#/show/{{show._id}}">
+              {{show.title}}
+            </a>
+          </div>      
         </div>
       </div>
     </div>

@@ -22,16 +22,38 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 .image-row{
   display: flex;
   flex-flow: row wrap;
-  div{
-    flex: auto;
-    width: 30%;
-    margin: .5vw;
-    img{
-      height: auto;
-      width: 100%;
+  justify-content: center;
+  .wrapper{
+    flex: 0 1 32%;
+    height: 280px;
+    margin: .5vw;    
+    background: #ddd;
+    .overlay{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(10,10,10, 0.75);
+      color: white;
+      font-size: 2em;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      opacity: 0;
+      height: 100%;
+      text-align: center;
+      &:hover{
+        opacity: 0.75;
+      }
+      a{
+        color: #bbb;
+        text-decoration: none;
+        &:hover{
+          color: white;
+        }
+      }
     }
   }
 }
+
+    
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
