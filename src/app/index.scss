@@ -19,41 +19,60 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   padding: 0.2em 0;
 }
 
-.image-row{
+.shows{
   display: flex;
-  flex-flow: row wrap;
+  flex-wrap: wrap;
   justify-content: center;
-  .wrapper{
-    flex: 0 1 32%;
-    height: 280px;
-    margin: .5vw;    
-    background: #ddd;
-    .overlay{
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: rgba(10,10,10, 0.75);
-      color: white;
-      font-size: 2em;
-      font-family: Verdana, Geneva, Tahoma, sans-serif;
-      opacity: 0;
-      height: 100%;
-      text-align: center;
-      &:hover{
-        opacity: 0.75;
-      }
-      a{
-        color: #bbb;
-        text-decoration: none;
-        &:hover{
-          color: white;
-        }
-      }
+  align-content: stretch;
+  
+  .show-card{
+    box-sizing: border-box;
+    padding: 2%;
+    flex-grow: 1;
+    flex-basis: 20%;
+    /* evitar que crezcan
+     * los ultimos 4 elementos(ultima fila - 1)
+     */
+    &:last-child, 
+    &:nth-last-child(2),
+    &:nth-last-child(3),
+    &:nth-last-child(4),
+    {
+      flex-grow: 0;
+    }
+    
+    display: flex;
+    flex-direction: column;
+  }
+
+  @media (max-width: 920px){
+    .show-card{
+      flex: 1 25%;
     }
   }
+  
+  @media(max-width: 600px){
+    .show-card{
+      flex: 1 50%;
+    }
+  }
+
+  .show-img{
+    max-height: 100%;
+    flex-grow: 1;
+    img{
+      overflow: hidden;
+      max-width: 100%;
+    }
+  }
+
+  .show-info{
+    margin-top: auto;
+  }
+  
 }
 
-    
+
 
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject

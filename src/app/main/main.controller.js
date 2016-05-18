@@ -15,15 +15,12 @@
     vm.error = null;
 
     vm.showToastr = showToastr;
-    vm.showlist = showlist;
+    vm.showlist = function(){};
 
     activate();
 
-    function activate() {
-      
-    }
 
-    function showlist(){
+    function activate(){
       $http.get(api+"/shows/1")
         .then(function(res){
           vm.showData = res.data;

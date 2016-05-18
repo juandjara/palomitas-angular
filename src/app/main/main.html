@@ -5,6 +5,7 @@
   </div>
 
   <div class="jumbotron text-center">
+    <!--
     <h1>'Allo, 'Allo!</h1>
     <p class="lead">
       <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
@@ -13,16 +14,18 @@
     <button class="btn btn-success" ng-click="vm.showlist()">
       Get shows
     </button>
+    -->
+    <h1 class="text-center" ng-hide="vm.showData">Loading...</h1>
     <div style="text-align: left" ng-show="vm.showData">
       <p>Shows: Page 1</p>
-      <div class="image-row">
-        <div class="wrapper" ng-repeat="show in vm.showData | limitTo: 18"
-             ng-style="{'background-image': 'url({{show.images.poster}})', 'background-size': 'cover' }">
-          <div class="overlay">
-            <a ng-href="#/show/{{show._id}}">
-              {{show.title}}
-            </a>
-          </div>      
+      <div class="shows" ng-show="vm.showData">
+        <div class="show-card" ng-repeat="show in vm.showData" ng-cloak>
+          <div class="show-img">
+            <img ng-src="{{show.images.poster}}" alt="{{show.title}}">
+          </div>
+          <div class="show-info">
+            <h5>{{show.title}} </h5>
+          </div>  
         </div>
       </div>
     </div>
