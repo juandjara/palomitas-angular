@@ -1,9 +1,17 @@
 <nav class="navbar navbar-static-top navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
+      <!--
       <a class="navbar-brand" href="https://github.com/Swiip/generator-gulp-angular">
         <span class="glyphicon glyphicon-home"></span> Gulp Angular
       </a>
+      -->
+      <a class="navbar-brand" href="#">
+        <img class="nav-logo" alt="Logo de Palomitas"
+             src="http://popcorn.co.za/wp-content/uploads/2014/08/popcorn-icon.png">
+        <span>Palomitas</span>
+      </a>
+      
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-6">
@@ -12,14 +20,29 @@
         <li><a ng-href="#">About</a></li>
         <li><a ng-href="#">Contact</a></li>
       </ul>
-
-      <ul class="nav navbar-nav navbar-right acme-navbar-text">
+      <form role="search" class="navbar-form navbar-right">
+      <div class="input-group">
+        <input type="text" placeholder="¿Que quieres ver?" class="form-control">                    
+        <span class="input-group-btn">
+          <button title="Buscar" style="padding-bottom: 7px" class="btn btn-primary">
+            <span class="glyphicon glyphicon-search"></span>
+          </button>  
+        </span>
+      </div>      
+      </form>
+      <ul class="nav navbar-nav navbar-right">
         <li>
+          <!--
           <a style="color: white;" >
           Application was created {{ vm.relativeDate }}.            
           </a>
+          -->
         </li>
       </ul>
     </div>
+    <div>
+      
+    </div>
+    
   </div>
 </nav>
