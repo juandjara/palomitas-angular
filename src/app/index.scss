@@ -22,10 +22,18 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 .no-pd{
   padding: 0;
 }
+.p1em{
+  padding: 1em;
+}
 .shows-container{
+  padding: 1.2em;
   margin-top: -20px;
   border-radius: 0 !important;
   margin-bottom: 0 !important;
+  .header{
+    font-weight: bolder;
+    text-shadow: 0 4px 4px rgba(0,0,0,.5)
+  }
 }
 .dark-bg{
   background-color: #2C3E50;

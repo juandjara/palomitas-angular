@@ -19,9 +19,8 @@
 
     activate();
 
-
     function activate(){
-      $http.get(api+"/shows/1")
+      $http.get(api+"/shows/1?sort=trending")
         .then(function(res){
           vm.showData = res.data;
           vm.error = null;

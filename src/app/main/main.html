@@ -1,23 +1,13 @@
 <div class="container-fluid no-pd">
+  <acme-navbar creation-date="main.creationDate"></acme-navbar>
 
-  <div>
-    <acme-navbar creation-date="main.creationDate"></acme-navbar>
-  </div>
-
-  <div class="shows-container jumbotron text-center dark-bg">
-    <!--
-    <h1>'Allo, 'Allo!</h1>
-    <p class="lead">
-      <img src="assets/images/yeoman.png" alt="I'm Yeoman"><br>
-      Always a pleasure scaffolding your apps.
-    </p>
-    <button class="btn btn-success" ng-click="vm.showlist()">
-      Get shows
-    </button>
-    -->
+  <div class="shows-container text-center dark-bg">
+    <!-- Solo se muestra mientras se realiza la peticion inicial -->
     <h1 ng-hide="vm.showData">Loading...</h1>
-    <div style="text-align: left" ng-show="vm.showData">
-      <p>Shows: Page 1</p>
+    
+    <!-- Solo se muestra si la peticion inicial tuvo exito -->
+    <div ng-show="vm.showData">
+      <h1 class="header">Las series más populares</h1>
       <div class="shows" ng-show="vm.showData">
         <div class="show-card" ng-repeat="show in vm.showData" ng-cloak>
           <div class="show-img">
@@ -29,6 +19,8 @@
         </div>
       </div>
     </div>
+    
+    <!-- Solo se muestra si la peticion inicial falló -->
     <div style="text-align: left" ng-show="vm.error">
       <p>Error</p>
       <pre>
@@ -37,5 +29,4 @@
     </div>
     
   </div>
-
 </div>
