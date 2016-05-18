@@ -1,10 +1,10 @@
-<div class="container">
+<div class="container-fluid no-pd">
 
   <div>
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
-  <div class="jumbotron text-center">
+  <div class="shows-container jumbotron text-center dark-bg">
     <!--
     <h1>'Allo, 'Allo!</h1>
     <p class="lead">
@@ -15,7 +15,7 @@
       Get shows
     </button>
     -->
-    <h1 class="text-center" ng-hide="vm.showData">Loading...</h1>
+    <h1 ng-hide="vm.showData">Loading...</h1>
     <div style="text-align: left" ng-show="vm.showData">
       <p>Shows: Page 1</p>
       <div class="shows" ng-show="vm.showData">
