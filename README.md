@@ -3,6 +3,7 @@
 Front-end del proyecto palomitas v2
 
 Este proyecto ha sido generado con el generador `gulp-angular`
+
 Requisitos previos para montar el proyecto
 
 - Node y npm
