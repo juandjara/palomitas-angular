@@ -30,72 +30,14 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   margin-top: -20px;
   border-radius: 0 !important;
   margin-bottom: 0 !important;
-  .header{
-    font-weight: bolder;
-    text-shadow: 0 4px 4px rgba(0,0,0,.5)
-  }
 }
 .dark-bg{
   background-color: #2C3E50;
   color: white;
 }
-
-.header-icon{
-  font-size: 2em;
-  color: lightgray;
-}
-
-.shows{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: stretch;
-  
-  .show-card{
-    box-sizing: border-box;
-    padding: 0.5%;
-    flex-grow: 1;
-    flex-basis: 20%;
-    /* evitar que crezcan
-     * los ultimos 4 elementos(ultima fila - 1)
-     */
-    &:last-child, 
-    &:nth-last-child(2),
-    &:nth-last-child(3),
-    &:nth-last-child(4),
-    {
-      flex-grow: 0;
-    }
-    
-    display: flex;
-    flex-direction: column;
-  }
-
-  @media (max-width: 920px){
-    .show-card{
-      flex: 1 25%;
-    }
-  }
-  
-  @media(max-width: 600px){
-    .show-card{
-      flex: 1 50%;
-    }
-  }
-
-  .show-img{
-    max-height: 100%;
-    flex-grow: 1;
-    img{
-      overflow: hidden;
-      max-width: 100%;
-    }
-  }
-
-  .show-info{
-    margin-top: auto;
-  }
-  
+.header-shadow{
+  font-weight: bolder;
+  text-shadow: 0 4px 4px rgba(0,0,0,.5)
 }
 
 

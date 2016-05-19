@@ -17,6 +17,6 @@ input.transparent{
   color: whitesmoke;
   box-shadow: none;
   &:focus{
-    border-bottom-color: #5AADBB;
+    border-bottom: 2px solid #5AADBB;
   }
 }

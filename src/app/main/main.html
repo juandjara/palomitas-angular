@@ -1,43 +1,44 @@
 <main>
-  <h1 class="text-center header">Proyecto Palomitas</h1>
+  <h1 class="text-center header-shadow">Proyecto Palomitas</h1>
   <h2 class="text-center">El poder de la red P2P en tu navegador</h2>
-  <h3 class="col-sm-3 col-xs-6 p1em text-center">
-    <span class="header-icon glyphicon glyphicon-fire"></span>
-    <br>
-    <span>Las utlimas novedades</span>
-  </h3>
-  <h3 class="col-sm-3 col-xs-6 p1em text-center">
-    <span class="header-icon glyphicon glyphicon-film"></span>
-    <br>
-    <span>Todas las series en version original</span>
-  </h3>
-  <h3 class="col-sm-3 col-xs-6 p1em text-center">
-    <span class="header-icon glyphicon glyphicon-globe"></span>
-    <br>
-    <span>Subtitulos en todos los idiomas</span>
-  </h3>
-  <h3 class="col-sm-3 col-xs-6 p1em text-center">
-    <span class="header-icon glyphicon glyphicon-cloud"></span>
-    <br>
-    <a href="http://github.com/juandjara/palomitas-angular">
-      Proyecto de codigo abierto
-    </a>
-  </h3>
+  <div class="row">
+    <h3 class="col-sm-3 col-xs-6 p1em text-center">
+      <span class="header-icon glyphicon glyphicon-fire"></span>
+      <br>
+      <span>Las utlimas novedades</span>
+    </h3>
+    <h3 class="col-sm-3 col-xs-6 p1em text-center">
+      <span class="header-icon glyphicon glyphicon-film"></span>
+      <br>
+      <span>Todas las series en version original</span>
+    </h3>
+    <h3 class="col-sm-3 col-xs-6 p1em text-center">
+      <span class="header-icon glyphicon glyphicon-globe"></span>
+      <br>
+      <span>Subtitulos en todos los idiomas</span>
+    </h3>
+    <h3 class="col-sm-3 col-xs-6 p1em text-center">
+      <span class="header-icon glyphicon glyphicon-cloud"></span>
+      <br>
+      <a href="http://github.com/juandjara/palomitas-angular">
+        Proyecto de codigo abierto
+      </a>
+    </h3>
+  </div>
+  
   <!-- Solo se muestra mientras se realiza la peticion inicial -->
   <h1 style="color: lightgrey" ng-hide="vm.showData">Loading...</h1>
   <!-- Solo se muestra si la peticion inicial tuvo exito -->
-  <div class="row-fluid" ng-show="vm.showData">
-    <h1 class="col-sm-12 header">Las series más populares:</h1>
+  <div class="row" ng-show="vm.showData">
+    <h1 class="col-sm-12 header-shadow">Las series más populares:</h1>
     <div class="col-sm-12 shows" ng-show="vm.showData">
       <div class="show-card" ng-repeat="show in vm.showData |limitTo: 15" ng-cloak>
         <div class="show-img">
           <img ng-src="{{show.images.poster}}" alt="{{show.title}}">
         </div>
-        <!--
-        <div class="show-info">
-          <h5>{{show.title}} </h5>
+        <div class="flex-center overlay">
+          <h3>{{show.title}} </h3>
         </div>
-        -->  
       </div>
     </div>
   </div>
