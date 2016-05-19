@@ -1,32 +1,54 @@
-<div class="container-fluid no-pd">
-  <acme-navbar creation-date="main.creationDate"></acme-navbar>
-
-  <div class="shows-container text-center dark-bg">
-    <!-- Solo se muestra mientras se realiza la peticion inicial -->
-    <h1 ng-hide="vm.showData">Loading...</h1>
-    
-    <!-- Solo se muestra si la peticion inicial tuvo exito -->
-    <div ng-show="vm.showData">
-      <h1 class="header">Las series más populares</h1>
-      <div class="shows" ng-show="vm.showData">
-        <div class="show-card" ng-repeat="show in vm.showData" ng-cloak>
-          <div class="show-img">
-            <img ng-src="{{show.images.poster}}" alt="{{show.title}}">
-          </div>
-          <div class="show-info">
-            <h5>{{show.title}} </h5>
-          </div>  
+<acme-navbar class="container-fluid no-pd" 
+             creation-date="main.creationDate">
+</acme-navbar>
+<div class="container-fluid no-pd shows-container dark-bg">
+  <h1 class="text-center header">Proyecto Palomitas</h1>
+  <h2 class="text-center">El poder de la red P2P en tu navegador</h2>
+  <h3 class="col-sm-3 p1em text-center">
+    <span class="header-icon glyphicon glyphicon-fire"></span>
+    <br>
+    <span>Las utlimas novedades</span>
+  </h3>
+  <h3 class="col-sm-3 p1em text-center">
+    <span class="header-icon glyphicon glyphicon-film"></span>
+    <br>
+    <span>Todas las series en version original</span>
+  </h3>
+  <h3 class="col-sm-3 p1em text-center">
+    <span class="header-icon glyphicon glyphicon-globe"></span>
+    <br>
+    <span>Subtitulos en todos los idiomas</span>
+  </h3>
+  <h3 class="col-sm-3 p1em text-center">
+    <span class="header-icon glyphicon glyphicon-cloud"></span>
+    <br>
+    <span>Proyecto de codigo abierto</span>
+  </h3>
+  <!-- Solo se muestra mientras se realiza la peticion inicial -->
+  <h1 style="color: lightgrey" ng-hide="vm.showData">Loading...</h1>
+  <!-- Solo se muestra si la peticion inicial tuvo exito -->
+  <div class="row-fluid" ng-show="vm.showData">
+    <h1 class="col-sm-12 header">Las series más populares:</h1>
+    <div class="col-sm-12 shows" ng-show="vm.showData">
+      <div class="show-card" ng-repeat="show in vm.showData |limitTo: 15" ng-cloak>
+        <div class="show-img">
+          <img ng-src="{{show.images.poster}}" alt="{{show.title}}">
         </div>
+        <!--
+        <div class="show-info">
+          <h5>{{show.title}} </h5>
+        </div>
+        -->  
       </div>
     </div>
-    
-    <!-- Solo se muestra si la peticion inicial falló -->
-    <div style="text-align: left" ng-show="vm.error">
-      <p>Error</p>
-      <pre>
-        {{vm.error | json}}
-      </pre>
-    </div>
-    
   </div>
+  
+  <!-- Solo se muestra si la peticion inicial falló -->
+  <div style="text-align: left" ng-show="vm.error">
+    <p>Error</p>
+    <pre>
+      {{vm.error | json}}
+    </pre>
+  </div>
+  
 </div>
