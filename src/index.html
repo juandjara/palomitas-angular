@@ -24,7 +24,13 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ui-view></div>
+    <acme-navbar class="container-fluid no-pd" 
+                 creation-date="main.creationDate">
+    </acme-navbar>
+    <div ui-view class="container-fluid shows-container dark-bg"></div>
+    <footer class="text-right dark-bg p1em" style="border-top: 1px solid #ccc">
+      <h4>Palomitas v2 2016</h4>
+    </footer>
 
     <!-- build:js(src) scripts/vendor.js -->
     <!-- bower:js -->
