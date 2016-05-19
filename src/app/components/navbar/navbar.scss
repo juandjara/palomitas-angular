@@ -4,9 +4,19 @@
   height: 20px;
   padding: 0;
 }
-.search-input{
+input.transparent{
   font-family:sans-serif, 'Glyphicons Halflings'; 
-  width: auto;
-  margin-top:   8px;
-  margin-right: 8px;
+  font-size: 16px;
+  
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid whitesmoke;
+  outline: 0;
+  padding: 5px 5px 4px 3px;
+  margin-right: -7px;
+  color: whitesmoke;
+  box-shadow: none;
+  &:focus{
+    border-bottom-color: #5AADBB;
+  }
 }
