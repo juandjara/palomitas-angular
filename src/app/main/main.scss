@@ -68,3 +68,11 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.shows-container a{
+  color: #5AADBB;
+  &:hover{
+    text-decoration: none;
+    color: #eee;
+  }
+}

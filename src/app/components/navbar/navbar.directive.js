@@ -32,7 +32,7 @@
         if(!query || query.length < 2){
           return;
         }
-        var url = "https://api.tvmaze.com/search/shows?q="+query;
+        var url = "http://api.tvmaze.com/search/shows?q="+query;
         return $http.get(url).then(function(res){
           vm.searchRes = res.data;
           return res.data;
@@ -40,10 +40,13 @@
       }
       
       function parseOmdb(obj){
-        if(angular.isObject(obj)){
-          return "void";
+        if(!angular.isObject(obj) ||
+           !obj.show || 
+           !obj.show.externals || 
+           !obj.show.externals.imdb){
+          return null;
         }
-        return obj.show.externals.imdb+": "+obj.show.name;
+        return /*obj.show.externals.imdb+": "+*/ obj.show.name;
       }
       
     }

@@ -4,11 +4,13 @@
           src="assets/images/popcorn-icon.png">
     <span>Palomitas</span>
   </a>
-  <div class="pull-right" style="padding-top: 8px; padding-right: 5px">
-    <input type="text" placeholder="¿Que quieres ver?" class="transparent"
+  <div class="pull-right col-md-4 col-xs-12" style="padding-top: 8px; padding-right: 5px">
+    <input type="text" placeholder="¿Que quieres ver?" class="col-xs-11 transparent"
            ng-model="vm.search" ng-model-options='{debounce: 300}'
            typeahead-no-results="'No results'"
-           uib-typeahead="option as vm.parseOmdb(option) for option in vm.searchOmdb($viewValue)"> 
+           uib-typeahead="option as vm.parseOmdb(option) for option in vm.searchOmdb($viewValue)"
+           typeahead-template-url="/app/components/navbar/searchItem.html"
+           typeahead-popup-template-url="/app/components/navbar/searchPopup.html"> 
     <button title="Buscar" class="btn btn-link">
       <span class="glyphicon glyphicon-search"></span>
     </button>
