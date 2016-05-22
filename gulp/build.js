@@ -95,8 +95,10 @@ gulp.task('clean', function () {
 });
 
 gulp.task('dokku-nginx', function(done){
-  var env_path    = path.join(conf.paths.dist, '.env');
-  var static_path = path.join(conf.paths.dist, '.static');
+  var base_path = path.join(__dirname, '..', conf.paths.dist);
+  require('mkdirp').sync(base_path);
+  var env_path = path.join(base_path, '.env');
+  var static_path = path.join(base_path, '.static');
   var env = "export BUILDPACK_URL=https://github.com/florianheinemann/buildpack-nginx.git";
 
   fs.writeFile(env_path, env, onWriteEnv);
