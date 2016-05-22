@@ -94,16 +94,4 @@ gulp.task('clean', function () {
   return $.del([path.join(conf.paths.dist, '/'), path.join(conf.paths.tmp, '/')]);
 });
 
-gulp.task('dokku-nginx', function(done){
-  var env_path    = path.join(__dirname, '..', conf.paths.dist, '.env');
-  var static_path = path.join(__dirname, '..', conf.paths.dist, '.static');
-  var env = "export BUILDPACK_URL=https://github.com/florianheinemann/buildpack-nginx.git";
-
-  fs.writeFile(env_path, env, onWriteEnv);
-
-  function onWriteEnv(err){
-    fs.writeFile(static_path, "", done);
-  }
-});
-
-gulp.task('build', ['html', 'fonts', 'other', 'dokku-nginx']);
+gulp.task('build', ['html', 'fonts', 'other']);
