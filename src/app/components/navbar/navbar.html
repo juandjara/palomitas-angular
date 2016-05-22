@@ -9,8 +9,8 @@
            ng-model="vm.search" ng-model-options='{debounce: 300}'
            typeahead-no-results="'No results'"
            uib-typeahead="option as vm.parseOmdb(option) for option in vm.searchOmdb($viewValue)"
-           typeahead-template-url="/app/components/navbar/searchItem.html"
-           typeahead-popup-template-url="/app/components/navbar/searchPopup.html"> 
+           typeahead-template-url="app/components/navbar/searchItem.html"
+           typeahead-popup-template-url="app/components/navbar/searchPopup.html"> 
     <button title="Buscar" class="btn btn-link">
       <span class="glyphicon glyphicon-search"></span>
     </button>

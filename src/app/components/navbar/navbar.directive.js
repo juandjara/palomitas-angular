@@ -32,7 +32,8 @@
         if(!query || query.length < 2){
           return;
         }
-        var url = "http://api.tvmaze.com/search/shows?q="+query;
+        var url = "https://anticorsproxy.herokuapp.com/https://tvmaze-https-tcwlcawmcs.now.sh";
+        url += "/search/shows?q="+query;
         return $http.get(url).then(function(res){
           vm.searchRes = res.data;
           return res.data;
