@@ -18,7 +18,7 @@ gulp.task('deploy', function(done){
   var bc = new BuildControl(options);
 
   bc.npm.bump();
-  bc.prePublishCheck();
+  bc.prepublishCheck();
   bc.run();
 
   done();
