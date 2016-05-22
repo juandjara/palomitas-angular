@@ -6,5 +6,3 @@ coverage/
 .idea/
 .tmp/
 dist/
-!dist/.env
-!dist/.static
