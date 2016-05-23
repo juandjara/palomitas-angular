@@ -33,7 +33,7 @@
           return;
         }
         var url = "https://tvapi.fuken.xyz"
-        url += "/search/shows?q="+query;
+        url += "/search?query="+query;
         return $http.get(url).then(function(res){
           vm.searchRes = res.data;
           return res.data;
