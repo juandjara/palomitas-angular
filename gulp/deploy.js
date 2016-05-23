@@ -4,7 +4,7 @@ var gulp = require('gulp');
 var path = require('path');
 var BuildControl = require('build-control').BuildControl;
 
-gulp.task('deploy', function(done){
+gulp.task('deploy', ['build'], function(done){
   var options = {
     cwd: path.join(__dirname, '..', 'dist'),
     branch: 'master',
