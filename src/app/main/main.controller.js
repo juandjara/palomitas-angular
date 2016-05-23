@@ -8,7 +8,7 @@
   /** @ngInject */
   function MainController(toastr, $http) {
     var vm = this;
-    var api = "https://api-fetch.website/tv"
+    var api = "https://tvapi.fuken.xyz"
 
     vm.creationDate = 1463518051145;
     vm.showData = null;
@@ -20,7 +20,7 @@
     activate();
 
     function activate(){
-      $http.get(api+"/shows/1?sort=trending")
+      $http.get(api+"/shows")
         .then(function(res){
           vm.showData = res.data;
           vm.error = null;

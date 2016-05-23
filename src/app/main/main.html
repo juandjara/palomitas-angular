@@ -35,12 +35,12 @@
     <div class="col-sm-12 shows" ng-show="vm.showData">
       <div class="show-card" ng-repeat="show in vm.showData |limitTo: 15" ng-cloak>
         <div class="show-img">
-          <img ng-src="{{show.images.poster}}" alt="{{show.title}}">
+          <img ng-src="{{show.image.medium}}" alt="{{show.name}}">
         </div>
         <div class="overlay">
           <div class="ribbon">
-            <p>{{show.title}} </p>
-            <p>{{show.rating.percentage / 10}} / 10 </p>
+            <p>{{show.name}} </p>
+            <p>{{show.rating.average}} / 10 </p>
             <a href class="btn btn-lg btn-success">Detalles</a>
           </div>
         </div>
