@@ -38,9 +38,11 @@
           <img ng-src="{{show.images.poster}}" alt="{{show.title}}">
         </div>
         <div class="overlay">
-          <a href class="ribbon">
-            {{show.title}}
-          </a>
+          <div class="ribbon">
+            <p>{{show.title}} </p>
+            <p>{{show.rating.percentage / 10}} / 10 </p>
+            <a href class="btn btn-lg btn-success">Detalles</a>
+          </div>
         </div>
       </div>
     </div>
