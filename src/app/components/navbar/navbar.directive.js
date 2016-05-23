@@ -32,7 +32,7 @@
         if(!query || query.length < 2){
           return;
         }
-        var url = "https://tvmaze.fuken.xyz"
+        var url = "https://tvapi.fuken.xyz"
         url += "/search/shows?q="+query;
         return $http.get(url).then(function(res){
           vm.searchRes = res.data;
