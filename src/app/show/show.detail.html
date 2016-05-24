@@ -7,9 +7,9 @@
     <header class="header">
       <h1>
         {{vm.show.title}}
-        <small style="background-color: rgba(white, 0.4)">
+        <span class="badge" style="font-size: initial">
           {{vm.show.rating.percentage / 10}} / 10
-        </small>
+        </span>
       </h1>
       <h3>
         <span ng-repeat="genre in vm.show.genres">
