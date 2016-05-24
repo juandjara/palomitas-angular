@@ -1,0 +1,22 @@
+<div class="show-details">
+  <div class="show-img">
+    <img ng-src="{{vm.show.images.banner}}" alt="{{vm.show.title}}">
+  </div>
+  <div class="overlay">
+    <img class="poster" ng-src="{{vm.show.images.poster}}" alt="{{vm.show.title}}">
+    <header class="header">
+      <h1>
+        {{vm.show.title}}
+        <small style="background-color: rgba(white, 0.4)">
+          {{vm.show.rating.percentage / 10}} / 10
+        </small>
+      </h1>
+      <h3>
+        <span ng-repeat="genre in vm.show.genres">
+          {{genre}}
+          <span ng-hide="$last">, </span>
+        </span>
+      </h3>
+    </header>
+  </div>
+</div>

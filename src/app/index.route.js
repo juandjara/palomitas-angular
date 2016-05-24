@@ -16,7 +16,7 @@
       })
       .state('show_detail', {
         url:'/show/:id',
-        templateUrl: 'app/show/detail.html',
+        templateUrl: 'app/show/show.detail.html',
         controller: 'ShowController',
         controllerAs: 'vm'
       });
