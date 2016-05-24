@@ -1,9 +1,67 @@
-.nav-logo{
-  float:left;
-  margin-right: 10px;
-  height: 20px;
-  padding: 0;
+$link-color: #5AADBB;
+
+/* navbar */
+.nav-bar{
+  /* colores de navbar-inverse de bootstrap */
+  background-color: #222;
+  border-bottom: 1px solid #090909;
+  min-height: 50px;
+  
+  display: flex;
+  justify-content: space-between;
+  @media(max-width: 768px){
+    flex-direction: column;
+  }
+  
+  .nav-logo{
+    height: 50px;
+    line-height: 20px;
+    font-size: 18px;
+    padding: 15px;
+    @media(max-width: 768px){
+      padding-bottom: 0;
+      margin-bottom: 5px;
+      height: 35px;
+    }
+    span{
+      padding-top: 1px;
+    }
+    .nav-icon{
+      margin-top: -2px;
+      margin-right: 5px;
+      height: 20px;
+      padding: 0;
+    }
+  }
+  .nav-search{
+    flex-basis: 30%;
+    display: flex;
+    border-top: 1px solid #555;
+    box-sizing: border-box;
+    input{
+      flex: 1 1 85%;
+      margin: 0px 8px 10px 8px;      
+    }
+    .btn{
+      padding: 15px !important;
+      border-left: 1px solid #555;
+      background-color: #333;
+      height: 100%;
+      color: $link-color;
+      &:hover{
+        color: white;
+      }
+    }
+  }
+  a{
+    color: $link-color;
+    &:hover{
+      color: white;
+      text-decoration: none;
+    }
+  }
 }
+
 input.transparent{
   font-family:sans-serif, 'Glyphicons Halflings'; 
   font-size: 16px;
@@ -13,14 +71,14 @@ input.transparent{
   border-bottom: 1px solid whitesmoke;
   outline: 0;
   padding: 5px 5px 4px 3px;
-  margin-right: -7px;
   color: whitesmoke;
   box-shadow: none;
   &:focus{
-    border-bottom: 2px solid #5AADBB;
+    border-bottom: 2px solid $link-color;
   }
 }
 
+/* searchPopup */
 .search-results{
   position: absolute;
   background-color: #111;
@@ -31,6 +89,7 @@ input.transparent{
   flex-direction: column;
   align-content: center;
   
+  /* searchItem */
   .search-item{
     display: flex;
     align-items: center;

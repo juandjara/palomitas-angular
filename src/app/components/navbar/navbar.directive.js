@@ -24,11 +24,11 @@
     function NavbarController(moment, $http) {
       var vm = this;
       vm.searchRes;
-      vm.search = "";
-      vm.searchOmdb = searchOmdb;
-      vm.parseOmdb = parseOmdb;
+      vm.searchText = "";
+      vm.search = search;
+      vm.parseSearch = parseSearch;
       
-      function searchOmdb(query){
+      function search(query){
         if(!query || query.length < 2){
           return;
         }
@@ -40,7 +40,7 @@
         })
       }
       
-      function parseOmdb(obj){
+      function parseSearch(obj){
         if(!angular.isObject(obj) ||
            !obj.show || 
            !obj.show.externals || 

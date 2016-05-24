@@ -1,18 +1,19 @@
-<nav class="navbar navbar-static-top navbar-inverse">
-  <a class="navbar-brand" href="#">
-    <img class="nav-logo" alt="Logo de Palomitas"
+<nav class="nav-bar">
+  <a href="#" class="nav-logo">
+    <img class="nav-icon" alt="Logo de Palomitas"
           src="assets/images/popcorn-icon.png">
     <span>Palomitas</span>
   </a>
-  <div class="pull-right col-md-4 col-xs-12" style="padding-top: 8px; padding-right: 5px">
-    <input type="text" placeholder="¿Que quieres ver?" class="col-xs-11 transparent"
-           ng-model="vm.search" ng-model-options='{debounce: 300}'
+  <section class="nav-search">
+    <input type="text" placeholder="¿Que quieres ver?"
+           class="transparent"
+           ng-model="vm.searchText" ng-model-options='{debounce: 300}'
            typeahead-no-results="'No results'"
-           uib-typeahead="option as vm.parseOmdb(option) for option in vm.searchOmdb($viewValue)"
+           uib-typeahead="option as vm.parseSearch(option) for option in vm.search($viewValue)"
            typeahead-template-url="app/components/navbar/searchItem.html"
            typeahead-popup-template-url="app/components/navbar/searchPopup.html"> 
     <button title="Buscar" class="btn btn-link">
       <span class="glyphicon glyphicon-search"></span>
     </button>
-  </div>  
+  </section>  
 </nav>
