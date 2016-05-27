@@ -20,3 +20,17 @@
     </header>
   </div>
 </div>
+<div style="margin-top: 2em">
+  <div class="btn-group-vertical pull-left">
+    <button class="btn btn-primary"
+            ng-repeat="season in vm.episodes"
+            ng-click="vm.selection = season">
+      Season {{$index +1}}
+    </button>  
+  </div>
+  <ul class="list-group" style="margin-left: 7em">
+    <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selection">
+      {{ep.season}}x{{ep.episode}} - {{ep.title}}
+    </li>
+  </ul>  
+</div>

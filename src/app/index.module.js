@@ -2,6 +2,11 @@
   'use strict';
 
   angular
-    .module('palomitasClient2', ['ui.router', 'ui.bootstrap', 'toastr']);
+    .module('palomitasClient2', [
+      'ui.router', 
+      'ui.bootstrap', 
+      'toastr', 
+      'ngLodash'
+    ]);
 
 })();
