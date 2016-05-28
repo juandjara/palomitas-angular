@@ -24,8 +24,8 @@
   <div class="btn-group-vertical pull-left">
     <button class="btn btn-primary"
             ng-repeat="season in vm.episodes"
-            ng-click="vm.selection = season">
-      Season {{$index +1}}
+            ng-click="vm.selection = season.episodes">
+      Temporada {{season.number}}
     </button>  
   </div>
   <ul class="list-group" style="margin-left: 7em">

@@ -24,7 +24,7 @@
       $http.get(url).then(function(res){
         vm.show = res.data;
         vm.episodes = getEpisodes(res.data);
-        vm.selection = vm.episodes[0];
+        vm.selection = vm.episodes[0].episodes;
       })
     }
     
@@ -32,8 +32,9 @@
       var eps = show.episodes;
       var grouped = _.groupBy(eps, 'season');
       var moreGrouped = Object.keys(grouped).map(function(index){
-        var season        = grouped[index];
-        return _.sortBy(season, 'episode');
+        var season = grouped[index];
+        var sortedSeason = _.sortBy(season, 'episode');
+        return { number: sortedSeason[0].season, episodes: sortedSeason };
       });
       return moreGrouped;
     }
