@@ -6,7 +6,8 @@
       'ui.router', 
       'ui.bootstrap', 
       'toastr', 
-      'ngLodash'
+      'ngLodash',
+      'duScroll'
     ]);
 
 })();

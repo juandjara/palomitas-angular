@@ -52,9 +52,6 @@
   display: flex;
   flex-wrap: nowrap;
   overflow: auto;
-  @media(max-width: 768px){
-    //flex-direction: column;
-  }
   max-height: 100%;
   height: 100%;
   .episode-selector{
@@ -64,13 +61,12 @@
     .episode-list{
       flex: 1 0 50%;
     }
-    @media(max-width: 768px){
+    @media(max-width: 767px){
       width: 100%;
       flex-basis: auto;
     }
   }
   .episode{
-    box-sizing: border-box;
     background-color: $bg-color-light;
     margin-left: 1em;
     margin-bottom: 1.35em;
@@ -78,7 +74,7 @@
     overflow: auto;
     max-height: 100%;
     height: 100%;
-    @media(max-width: 768px){
+    @media(max-width: 767px){
       margin-left: 0;
       max-width: 100%;
       flex: 1 0 auto;

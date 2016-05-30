@@ -39,15 +39,19 @@
       </div>
       <ul class="episode-list list-group" style="margin-left: 1em">
         <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selection">
-          <a href
-                  ng-click="vm.currentEpisode = ep">
+          <a href ng-click="vm.setEpisode(ep)">
             {{ep.season}}x{{ep.episode}} - {{ep.title}}                    
           </a>
         </li>
       </ul>
     </div>
     <div class="episode">
-      <h2>{{vm.currentEpisode.title}} </h2>
+      <button class="visible-xs btn btn-primary" style="margin-top: 1em"
+              ng-click="vm.scrollBack()">
+        <span class="glyphicon glyphicon-chevron-left"></span>
+        Atrás
+      </button>
+      <h2 style="margin-top: 0.2em">{{vm.currentEpisode.title}} </h2>
       <p style="color: grey">
         Season {{vm.currentEpisode.season}} 
         Episode {{vm.currentEpisode.episode}}

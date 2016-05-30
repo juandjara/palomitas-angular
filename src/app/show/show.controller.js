@@ -6,7 +6,7 @@
     .controller('ShowController', ShowController);
     
   /** @ngInject */
-  function ShowController($stateParams, $http, lodash){
+  function ShowController($stateParams, $http, lodash, $window){
     var vm = this;
     var _  = lodash;
     
@@ -17,7 +17,8 @@
     vm.currentEpisode;
     
     vm.space  = space;
-    vm.arrify = arrify;
+    vm.setEpisode = setEpisode;    
+    vm.scrollBack = scrollBack;
     
     activate();
     
@@ -27,12 +28,15 @@
       return angular.toJson(obj, true);
     }
     
-    function arrify(obj){
-      var arr = [];
-      angular.forEach(obj, function iterateObj(val, key){
-        arr.push({key: key, val: val});
-      });
-      return arr;
+    function setEpisode(ep){
+      vm.currentEpisode = ep;
+      var el = document.querySelector(".episodes");
+      angular.element(el).scrollLeft($window.innerWidth, 400);
+    }
+    
+    function scrollBack(){
+      var el = document.querySelector(".episodes");
+      angular.element(el).scrollLeft(0, 400);
     }
     
     // PRIVATE METHODS
