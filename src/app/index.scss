@@ -15,6 +15,9 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
 // bower:scss
 // endbower
 
+$bg-color: #2C3E50;
+$bg-color-light: darken($bg-color, 5%);
+
 .opensans{
   font-family: 'Open Sans', sans-serif;
 }
@@ -42,7 +45,7 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   margin-bottom: 0 !important;
 }
 .dark-bg{
-  background-color: #2C3E50;
+  background-color: $bg-color;
   color: white;
 }
 .header-shadow{

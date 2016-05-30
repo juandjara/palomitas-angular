@@ -27,16 +27,38 @@
   </div>
 </div>
 <div class="opensans" style="margin-top: 1em; padding: 0 1em">
-  <div class="btn-group-vertical pull-left">
-    <button class="btn btn-primary"
-            ng-repeat="season in vm.episodes"
-            ng-click="vm.selection = season.episodes">
-      Temporada {{season.number}}
-    </button>  
+  <h1 style="margin-top: 0; margin-bottom: .5em">Episodios</h1>      
+  <div class="episodes">
+    <div class="episode-selector">
+      <div class="season-list btn-group-vertical">
+        <button class="btn btn-primary"
+                ng-repeat="season in vm.episodes"
+                ng-click="vm.selection = season.episodes">
+          Temporada {{season.number}}
+        </button>  
+      </div>
+      <ul class="episode-list list-group" style="margin-left: 1em">
+        <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selection">
+          <a href
+                  ng-click="vm.currentEpisode = ep">
+            {{ep.season}}x{{ep.episode}} - {{ep.title}}                    
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="episode">
+      <h2>{{vm.currentEpisode.title}} </h2>
+      <p style="color: grey">
+        Season {{vm.currentEpisode.season}} 
+        Episode {{vm.currentEpisode.episode}}
+      </p>
+      <p>{{vm.currentEpisode.overview}} </p>
+      <div ng-repeat="(type, torrent) in vm.currentEpisode.torrents">
+        <p>
+          {{type}} | seeds: {{torrent.seeds}} | peers: {{torrent.peers}}
+        </p>
+        <pre class="pre-wrap">{{torrent.url}}</pre>
+      </div>
+    </div>
   </div>
-  <ul class="list-group" style="margin-left: 9em">
-    <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selection">
-      {{ep.season}}x{{ep.episode}} - {{ep.title}}
-    </li>
-  </ul>  
 </div>

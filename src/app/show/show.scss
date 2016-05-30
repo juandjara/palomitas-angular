@@ -30,7 +30,8 @@
       padding: 0.5em 1em;
       align-self: flex-end;
       overflow: auto;
-      @media(max-width: 768px){
+      max-height: 100%;
+      @media(max-width: 767px){
         max-height: 15em;                
       }
       h1{
@@ -47,3 +48,43 @@
   }
 }
 
+.episodes{
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: auto;
+  @media(max-width: 768px){
+    //flex-direction: column;
+  }
+  max-height: 100%;
+  height: 100%;
+  .episode-selector{
+    display: flex;
+    flex: 1 0 55%;
+    max-width: 100%;
+    .episode-list{
+      flex: 1 0 50%;
+    }
+    @media(max-width: 768px){
+      flex-basis: auto;
+    }
+  }
+  .episode{
+    box-sizing: border-box;
+    background-color: $bg-color-light;
+    margin-left: 1em;
+    margin-bottom: 1.35em;
+    padding: 0 1em;
+    overflow: auto;
+    max-height: 100%;
+    height: 100%;
+    @media(max-width: 768px){
+      margin-left: 0;
+      max-width: 100%;
+      flex: 1 0 auto;
+    }
+    .pre-wrap{
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  }
+}

@@ -14,9 +14,28 @@
     vm.show;
     vm.episodes  = [];
     vm.selection = [];
-    vm.space = space;
+    vm.currentEpisode;
+    
+    vm.space  = space;
+    vm.arrify = arrify;
     
     activate();
+    
+    // PUBLIC METHODS
+    
+    function space(obj){
+      return angular.toJson(obj, true);
+    }
+    
+    function arrify(obj){
+      var arr = [];
+      angular.forEach(obj, function iterateObj(val, key){
+        arr.push({key: key, val: val});
+      });
+      return arr;
+    }
+    
+    // PRIVATE METHODS
     
     function activate(){
       var api = "https://api-fetch.website/tv/";
@@ -25,6 +44,7 @@
         vm.show = res.data;
         vm.episodes = getEpisodes(res.data);
         vm.selection = vm.episodes[0].episodes;
+        vm.currentEpisode = vm.selection[0];
       })
     }
     
@@ -39,9 +59,7 @@
       return moreGrouped;
     }
     
-    function space(obj){
-      return angular.toJson(obj, true);
-    }
+    
     
   }
   
