@@ -57,12 +57,18 @@
         Episode {{vm.currentEpisode.episode}}
       </p>
       <p>{{vm.currentEpisode.overview}} </p>
-      <div ng-repeat="(type, torrent) in vm.currentEpisode.torrents">
-        <p>
-          {{type}} | seeds: {{torrent.seeds}} | peers: {{torrent.peers}}
-        </p>
-        <pre class="pre-wrap">{{torrent.url}}</pre>
-      </div>
+      <br>
+      <uib-tabset>
+        <uib-tab ng-repeat="(type, torrent) in vm.currentEpisode.torrents"
+                 index="$index" heading="{{type == '0' ? 'Default' : type }}">
+          <div class="tab-inner">
+            <p>
+              seeds: {{torrent.seeds}} | peers: {{torrent.peers}}
+            </p>
+            <pre class="pre-wrap">{{torrent.url}}</pre>         
+          </div>
+        </uib-tab>  
+      </uib-tabset>
     </div>
   </div>
 </div>
