@@ -8,7 +8,7 @@ gulp.task('deploy', ['build'], function(done){
   var options = {
     cwd: path.join(__dirname, '..', 'dist'),
     branch: 'master',
-    versionBump: 'minor',
+    versionBump: 'patch',
     remote: {
       repo: 'dokku@ssh.fuken.xyz:palomitas',
       branch: 'master'
