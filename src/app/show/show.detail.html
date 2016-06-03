@@ -60,7 +60,7 @@
       <br>
       <uib-tabset>
         <uib-tab ng-repeat="(type, torrent) in vm.currentEpisode.torrents"
-                 index="$index" heading="{{type == '0' ? 'Default' : type }}">
+                 index="$index" heading="{{type}}" ng-if="type != 0">
           <div class="tab-inner">
             <p>
               seeds: {{torrent.seeds}} | peers: {{torrent.peers}}
@@ -69,6 +69,19 @@
           </div>
         </uib-tab>  
       </uib-tabset>
+      <p>
+        <br>
+        Puede usar este <em>magnet link</em> para ver el episodio
+        usando <a href="https://palomitas-player.herokuapp.com">Palomitas Player</a>
+        <br>
+        Pegue alli el <em>magnet link</em> y podra ver el progreso del torrent
+        <br>
+        Pasados unos segundos podra ver el progreso de la descarga del torrent y
+        una lista de enlaces a los archivos que contiene este torrent.
+        <br>
+        Podra usar el enlace del archivo de video para ver el episodio
+        en un reproductor como <em>VLC</em> o <em>MPV</em> 
+      </p>
     </div>
   </div>
 </div>
