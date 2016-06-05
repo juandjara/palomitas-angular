@@ -108,4 +108,14 @@ gulp.task('dokku-nginx', function(done){
   }
 });
 
-gulp.task('build', ['html', 'fonts', 'other', 'dokku-nginx']);
+gulp.task('github-cname', function(done){
+  var base_path = path.join(__dirname, '..', conf.paths.dist);
+  require('mkdirp').sync(base_path);
+  var cname_path = path.join(base_path, 'CNAME');
+  var CNAME = "palomitas.fuken.xyz";
+  
+  fs.writeFile(cname_path, CNAME, done);
+
+})
+
+gulp.task('build', ['html', 'fonts', 'other', 'github-cname']);
