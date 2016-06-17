@@ -33,7 +33,7 @@
   <div class="row" ng-show="vm.showData">
     <h1 class="col-sm-12 header-shadow">Las series más populares:</h1>
     <div class="col-sm-12 shows" ng-show="vm.showData">
-      <div class="show-card" ng-repeat="show in vm.showData |limitTo: 15" ng-cloak>
+      <div class="show-card" ng-repeat="show in vm.showData |limitTo: 15">
         <div class="show-img">
           <img ng-src="{{show.image.medium}}" alt="{{show.name}}">
         </div>
