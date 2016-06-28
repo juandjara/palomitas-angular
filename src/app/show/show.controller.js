@@ -6,20 +6,22 @@
     .controller('ShowController', ShowController);
     
   /** @ngInject */
-  function ShowController($stateParams, $http, lodash, $window){
+  function ShowController($stateParams, $http, $httpParamSerializer, lodash, $window, $rootScope){
     var vm = this;
     var _  = lodash;
     
     vm.id = $stateParams.id;
     vm.show;
     vm.episodes  = [];
-    vm.selection = [];
-    vm.currentEpisode;
-    
-    vm.space  = space;
+    vm.selectedSeason = [];
+    vm.selectedEpisode;
+    vm.langs;
+
+    vm.space = space;
     vm.setEpisode = setEpisode;    
     vm.scrollBack = scrollBack;
-    
+    vm.loadSubtitles = loadSubtitles;
+
     activate();
     
     // PUBLIC METHODS
@@ -29,7 +31,7 @@
     }
     
     function setEpisode(ep){
-      vm.currentEpisode = ep;
+      vm.selectedEpisode = ep;
       var el = document.querySelector(".episodes");
       angular.element(el).scrollLeft($window.innerWidth, 400);
     }
@@ -39,6 +41,20 @@
       angular.element(el).scrollLeft(0, 400);
     }
     
+    function loadSubtitles(episode){
+      vm.langs = $rootScope.langs;
+      var api = "https://sub-down.fuken.xyz";
+      var url = api+"/search?"+$httpParamSerializer({
+        imdbid: vm.id,
+        season: episode.season,
+        episode: episode.episode
+      });
+
+      $http.get(url).then(function onSubtitles(subs) {
+        vm.subtitles = subs;
+      })
+    }
+
     // PRIVATE METHODS
     
     function activate(){
@@ -47,9 +63,9 @@
       $http.get(url).then(function(res){
         vm.show = res.data;
         vm.episodes = getEpisodes(res.data);
-        vm.selection = vm.episodes[0].episodes;
-        vm.currentEpisode = vm.selection[0];
-      })
+        vm.selectedSeason = vm.episodes[0].episodes;
+        vm.selectedEpisode = vm.selectedSeason[0];
+      });
     }
     
     function getEpisodes(show){

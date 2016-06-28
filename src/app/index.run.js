@@ -6,9 +6,13 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log) {
-
-    $log.debug('runBlock end');
+  function runBlock($log, $http, $rootScope) {
+    $log.debug('Palomitas V2');
+    var api = "https://sub-down.fuken.xyz";
+    var url = api+"/weblangs.json";
+    $http.get(url).then(function(res){
+      $rootScope.langs = res.data;
+    });
   }
 
 })();

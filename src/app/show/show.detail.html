@@ -33,12 +33,12 @@
       <div class="season-list btn-group-vertical">
         <button class="btn btn-primary"
                 ng-repeat="season in vm.episodes"
-                ng-click="vm.selection = season.episodes">
+                ng-click="vm.selectedSeason = season.episodes">
           Temporada {{season.number}}
         </button>  
       </div>
       <ul class="episode-list list-group" style="margin-left: 1em">
-        <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selection">
+        <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selectedSeason">
           <a href ng-click="vm.setEpisode(ep)">
             {{ep.season}}x{{ep.episode}} - {{ep.title}}                    
           </a>
@@ -51,15 +51,15 @@
         <span class="glyphicon glyphicon-chevron-left"></span>
         Atrás
       </button>
-      <h2 style="margin-top: 0.2em">{{vm.currentEpisode.title}} </h2>
+      <h2 style="margin-top: 0.2em">{{vm.selectedEpisode.title}} </h2>
       <p style="color: grey">
-        Season {{vm.currentEpisode.season}} 
-        Episode {{vm.currentEpisode.episode}}
+        Season {{vm.selectedEpisode.season}} 
+        Episode {{vm.selectedEpisode.episode}}
       </p>
-      <p>{{vm.currentEpisode.overview}} </p>
+      <p>{{vm.selectedEpisode.overview}} </p>
       <br>
       <uib-tabset>
-        <uib-tab ng-repeat="(type, torrent) in vm.currentEpisode.torrents"
+        <uib-tab ng-repeat="(type, torrent) in vm.selectedEpisode.torrents"
                  index="$index" heading="{{type}}" ng-if="type != 0">
           <div class="tab-inner">
             <p>
@@ -82,6 +82,8 @@
         Podra usar el enlace del archivo de video para ver el episodio
         en un reproductor como <em>VLC</em> o <em>MPV</em> 
       </p>
+      <button class="btn btn-primary" ng-click="vm.loadSubtitles(vm.selectedEpisode)">Subtitulos</button>
+      <pre class="pre-wrap" ng-show="vm.subtitles">{{vm.subtitles}} </pre>
     </div>
   </div>
 </div>
