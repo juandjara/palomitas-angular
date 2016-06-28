@@ -3,7 +3,7 @@
 
   angular
     .module('palomitasClient2')
-    .directive('navbar', navbar());
+    .component('navbar', navbar());
 
   /** @ngInject */
   function navbar() {
