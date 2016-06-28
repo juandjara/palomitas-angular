@@ -3,25 +3,20 @@
 
   angular
     .module('palomitasClient2')
-    .directive('navbar', navbar);
+    .directive('navbar', navbar());
 
   /** @ngInject */
   function navbar() {
-    var directive = {
-      restrict: 'E',
+    var component = {
       templateUrl: 'app/components/navbar/navbar.html',
-      scope: {
-          
-      },
       controller: NavbarController,
-      controllerAs: 'vm',
-      bindToController: true
+      controllerAs: 'vm'
     };
 
-    return directive;
+    return component;
 
     /** @ngInject */
-    function NavbarController(moment, $http) {
+    function NavbarController($http) {
       var vm = this;
       vm.searchRes;
       vm.searchText = "";
