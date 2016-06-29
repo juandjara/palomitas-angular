@@ -23,7 +23,8 @@ function browserSyncInit(baseDir, browser) {
 
   var server = {
     baseDir: baseDir,
-    routes: routes
+    routes: routes,
+    port: process.env.PORT || 3000
   };
 
   /*
