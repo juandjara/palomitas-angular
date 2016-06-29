@@ -82,8 +82,40 @@
         Podra usar el enlace del archivo de video para ver el episodio
         en un reproductor como <em>VLC</em> o <em>MPV</em> 
       </p>
-      <button class="btn btn-primary" ng-click="vm.loadSubtitles(vm.selectedEpisode)">Subtitulos</button>
-      <pre class="pre-wrap" ng-show="vm.subtitles">{{vm.subtitles}} </pre>
+      <button class="btn btn-primary" ng-click="vm.loadSubtitles(vm.selectedEpisode)">
+        <span class="glyphicon glyphicon-globe"></span> Buscar subtitulos
+      </button>
+      <div class="form-group" ng-show="vm.subtitles"
+           style="margin-top: 1em; display: flex; align-items: center">
+        <label for="langs" style="margin-right: 0.5em">Idioma</label>
+        <select ng-model="vm.selectedLang" class="form-control" name="langs" id="langs">
+          <option ng-value="lang.isoId" ng-repeat="lang in vm.langs">
+            {{lang.name}}
+          </option>
+        </select>
+      </div>
+      <ul class="list-group subs-list" ng-show="vm.selectedLang" style="color: black">
+        <li class="list-group-item" ng-repeat="sub in vm.subtitles[vm.selectedLang]"
+            style="display: flex; align-items: center">
+          <div style="flex: 0 1 65%">
+            <a class="pre-wrap" ng-href="{{sub.url}}">{{sub.subFilename}}</a>            
+          </div>
+          <div style="flex: 1 0 35%; margin-left: 1em">
+            <p>
+              <span title="Formato" class="glyphicon glyphicon-file"></span>
+              {{sub.encoding}}
+            </p>
+            <p>
+              <span title="Descargas" class="glyphicon glyphicon-download"></span>
+              {{sub.downloads.toLocaleString()}}
+            </p>
+            <p>
+              <span title="Fecha de subida" class="glyphicon glyphicon-calendar"></span>
+              {{sub.date.toLocaleString()}}
+            </p>
+          </div>  
+        </li> 
+      </div>
     </div>
   </div>
 </div>

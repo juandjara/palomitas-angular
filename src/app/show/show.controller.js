@@ -11,11 +11,12 @@
     var _  = lodash;
     
     vm.id = $stateParams.id;
-    vm.show;
-    vm.episodes  = [];
-    vm.selectedSeason = [];
-    vm.selectedEpisode;
-    vm.langs;
+    vm.show     = {};
+    vm.episodes = [];
+    vm.langs    = [];
+    vm.selectedSeason  = [];
+    vm.selectedEpisode = {};
+    vm.selectedLang    = "";
 
     vm.space = space;
     vm.setEpisode = setEpisode;    
@@ -50,8 +51,8 @@
         episode: episode.episode
       });
 
-      $http.get(url).then(function onSubtitles(subs) {
-        vm.subtitles = subs;
+      $http.get(url).then(function onSubtitles(res) {
+        vm.subtitles = res.data;
       })
     }
 
