@@ -65,7 +65,7 @@
             <p>
               seeds: {{torrent.seeds}} | peers: {{torrent.peers}}
             </p>
-            <spinner></spinner>
+            <spinner ng-show="vm.loading"></spinner>
             <pre ng-show="vm.showMagnet" class="pre-wrap">{{torrent.url}}</pre>         
           </div>
         </uib-tab>  
