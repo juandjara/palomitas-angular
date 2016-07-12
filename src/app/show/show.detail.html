@@ -65,25 +65,37 @@
             <p>
               seeds: {{torrent.seeds}} | peers: {{torrent.peers}}
             </p>
-            <pre class="pre-wrap">{{torrent.url}}</pre>         
+            <spinner></spinner>
+            <pre ng-show="vm.showMagnet" class="pre-wrap">{{torrent.url}}</pre>         
           </div>
         </uib-tab>  
       </uib-tabset>
+      <!--
       <p>
         <br>
         Puede usar este <em>magnet link</em> para ver el episodio
-        usando <a href="https://peerflix-server.herokuapp.com">Peerflix server</a>
+        usando <a href="https://plaomitas-player.fuken.com">el servidor de descargas</a>
         <br>
-        Pegue alli el <em>magnet link</em> y podra ver el progreso del torrent
+        Pegue alli el <em>magnet link</em> y podra ver el progreso de descarga del video
         <br>
-        Pasados unos segundos podra ver el progreso de la descarga del torrent y
+        Pasados unos segundos la parte superior del panel volverse verde y
         una lista de enlaces a los archivos que contiene este torrent.
         <br>
         Podra usar el enlace del archivo de video para ver el episodio
         en un reproductor como <em>VLC</em> o <em>MPV</em> 
       </p>
-      <button class="btn btn-primary" ng-click="vm.loadSubtitles(vm.selectedEpisode)">
+      -->
+      <button class="btn btn-success btn-block">
+        <span class="glyphicon glyphicon-play"></span> Reproducir        
+      </button>
+      <button class="btn btn-primary btn-block" ng-click="vm.loadSubtitles(vm.selectedEpisode)">
         <span class="glyphicon glyphicon-globe"></span> Buscar subtitulos
+      </button>
+      <button class="btn btn-primary btn-block">
+        <span class="glyphicon glyphicon-link"></span> Obtener enlace del video
+      </button>
+      <button class="btn btn-primary btn-block" ng-click="vm.showMagnet = true;">
+        <span class="glyphicon glyphicon-magnet"></span> Obtener enlace magnet
       </button>
       <div class="form-group" ng-show="vm.subtitles"
            style="margin-top: 1em; display: flex; align-items: center">
@@ -98,7 +110,9 @@
         <li class="list-group-item" ng-repeat="sub in vm.subtitles[vm.selectedLang]"
             style="display: flex; align-items: center">
           <div style="flex: 0 1 65%">
-            <a class="pre-wrap" ng-href="{{sub.url}}">{{sub.subFilename}}</a>            
+            <p class="pre-wrap">{{sub.subFilename}}</p>
+            Descargar en <a class="pre-wrap" ng-href="{{sub.links.srt}}">srt</a>
+            o <a class="pre-wrap" ng-href="{{sub.links.vtt}}">vtt</a>                        
           </div>
           <div style="flex: 1 0 35%; margin-left: 1em">
             <p>

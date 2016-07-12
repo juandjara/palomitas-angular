@@ -17,6 +17,7 @@
     vm.selectedSeason  = [];
     vm.selectedEpisode = {};
     vm.selectedLang    = "";
+    vm.showMagnet = false;
 
     vm.space = space;
     vm.setEpisode = setEpisode;    
