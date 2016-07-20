@@ -53,8 +53,10 @@
         episode: episode.episode
       });
 
+      vm.loading = true;
       $http.get(url).then(function onSubtitles(res) {
         vm.subtitles = res.data;
+        vm.loading = false;
       })
     }
 

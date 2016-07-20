@@ -65,7 +65,6 @@
             <p>
               seeds: {{torrent.seeds}} | peers: {{torrent.peers}}
             </p>
-            <spinner ng-show="vm.loading"></spinner>
             <pre ng-show="vm.showMagnet" class="pre-wrap">{{torrent.url}}</pre>         
           </div>
         </uib-tab>  
@@ -106,6 +105,7 @@
       <button class="btn btn-primary btn-block" ng-click="vm.showMagnet = true;">
         <span class="glyphicon glyphicon-magnet"></span> Obtener enlace magnet
       </button>
+      <spinner ng-show="vm.loading"></spinner>      
       <div class="form-group" ng-show="vm.subtitles"
            style="margin-top: 1em; display: flex; align-items: center">
         <label for="langs" style="margin-right: 0.5em">Idioma</label>
