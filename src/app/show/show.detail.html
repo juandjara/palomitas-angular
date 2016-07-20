@@ -70,30 +70,39 @@
           </div>
         </uib-tab>  
       </uib-tabset>
-      <!--
       <p>
-        <br>
-        Puede usar este <em>magnet link</em> para ver el episodio
-        usando <a href="https://plaomitas-player.fuken.com">el servidor de descargas</a>
-        <br>
-        Pegue alli el <em>magnet link</em> y podra ver el progreso de descarga del video
-        <br>
-        Pasados unos segundos la parte superior del panel volverse verde y
-        una lista de enlaces a los archivos que contiene este torrent.
-        <br>
-        Podra usar el enlace del archivo de video para ver el episodio
-        en un reproductor como <em>VLC</em> o <em>MPV</em> 
+        <h3>Instrucciones</h3>
+        <ol>
+          <li>Obtener enlace magnet desde esta pagina</li>
+          <li>Pegar enlace magnet en el 
+              <a target="_blank" href="https://palomitas-player.fuken.xyz">descargador</a> </li>
+          <li>Obtener enlace de video desde el descargador 
+              haciendo click derecho y seleccionando copiar direccion de enlace 
+              sobre el archivo que pese mas y tenga una extension de video 
+              como por ejemplo .mp4, .mkv o .avi</li>
+          <li>Obtener subtitulos desde esta pagina. 
+              Copiar enlace de subtitulos en formato VTT</li>
+          <li>Ir al <a target="_blank" href="https://palomitas-player.fuken.xyz/videojs">reproductor</a> 
+              y pegar los enlaces del video y los subtitulos para despues darle al boton 
+              (solo marcar el checkbox si el video ha sido convertido a la extension .m3u8)</li>
+        </ol>
+        <p><em>Bonus:</em> tambien puede usar el enlace de video  
+           para ver el video en reproductor como <em>VLC</em> 
+           o <em>MPV</em> que soporte abrir enlaces de red</p>
       </p>
-      -->
+      <!--
       <button class="btn btn-success btn-block">
         <span class="glyphicon glyphicon-play"></span> Reproducir        
       </button>
+      -->
       <button class="btn btn-primary btn-block" ng-click="vm.loadSubtitles(vm.selectedEpisode)">
         <span class="glyphicon glyphicon-globe"></span> Buscar subtitulos
       </button>
+      <!--
       <button class="btn btn-primary btn-block">
         <span class="glyphicon glyphicon-link"></span> Obtener enlace del video
       </button>
+      -->
       <button class="btn btn-primary btn-block" ng-click="vm.showMagnet = true;">
         <span class="glyphicon glyphicon-magnet"></span> Obtener enlace magnet
       </button>
