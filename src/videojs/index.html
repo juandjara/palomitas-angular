@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf-8 />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Reproductor de videos de palomitas.fuken.xyz">
+    <meta name="author" content="fuken">
+    <title>video.js - palomitas</title>
+    <link href="//vjs.zencdn.net/5.10.4/video-js.css" rel="stylesheet">
+    <link rel="stylesheet" href="videojs-minimal-skin.css" charset="utf-8">
+    <style>
+      .inputs{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0.5em;
+      }
+      .inputs label{
+        margin-left: 1em;
+      }
+      .inputs input{
+        margin-left: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="inputs">
+      <button onclick="play()">Play!</button>
+      <label for="hlscheck">HLS</label>
+      <input type="checkbox" id="hlscheck"> 
+      <label for="video">Video url</label>
+      <input type="url" id="video">
+      <label for="subs">Subtitles url</label>
+      <input type="url" id="subs">
+    </div>
+    <!-- crossorigin anonymous is necesary for loading
+         subtitles from another domain -->
+    <video id="player" class="video-js vjs-default-skin vjs-minimal-skin"
+          controls width="600" height="300" crossorigin="anonymous">
+    </video>
+    <script src="//vjs.zencdn.net/5.10.4/video.js"></script>
+    <script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
+    <script src="videojs5-hlsjs/vjs-hls.js"></script>
+    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    
+    <script src="main.js"></script> 
+  </body>
+</html>
