@@ -10,7 +10,7 @@ gulp.task('deploy', ['build'], function(done){
     branch: 'master',
     versionBump: 'patch',
     remote: {
-      repo: 'https://github.com/juandjara/palomitas-angular',
+	    repo: 'git@github.com:juandjara/palomitas-angular',
       branch: 'gh-pages'
     },
     clean:{
