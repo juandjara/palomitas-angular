@@ -1,37 +1,81 @@
 <!doctype html>
-<html>
+<html lang="es">
   <head>
     <meta charset=utf-8 />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reproductor de videos de palomitas.fuken.xyz">
-    <meta name="author" content="fuken">
+    <meta name="author" content="Juan D. Jara">
     <title>video.js - palomitas</title>
     <link href="//vjs.zencdn.net/5.10.4/video-js.css" rel="stylesheet">
     <link rel="stylesheet" href="videojs-minimal-skin.css" charset="utf-8">
     <style>
-      .inputs{
+      html. body {
+        margin: 0;
+      }
+      body{
+        font-family: sans-serif;
+        background-color: #eee;
+        text-align: center;
         display: flex;
-        flex-wrap: wrap;
-        margin: 0.5em;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
       }
-      .inputs label{
-        margin-left: 1em;
+      header h1{
+        margin-bottom: 0;
       }
-      .inputs input{
-        margin-left: 0.5em;
+      header .subhead{
+        font-weight: 300;
+        font-size: 1.5em;
+        color: #888;
+        margin-top: 0;
+      }
+      .input-group {
+        text-align: left;
+      }
+      input[type="url"]{
+        width: 100%;
+      }
+      .play{
+        font-size: 1.5em;
+        text-align: center;
+        padding: 0.5em 0.75em;
+        background-color: #5cb85c;
+        color: white;
+        border: 2px solid white; 
+      }
+      .play:hover{
+        background-color: transparent;
+        border: 2px solid #5cb85c;
+        color: #5cb85c;
+      }
+      .search-icon{
+        -webkit-transform: rotate(45deg); 
+        -moz-transform: rotate(45deg); 
+        -o-transform: rotate(45deg);
+        transform: rotate(45deg);
       }
     </style>
   </head>
   <body>
-    <div class="inputs">
-      <button onclick="play()">Play!</button>
-      <label for="hlscheck">HLS</label>
-      <input type="checkbox" id="hlscheck"> 
-      <label for="video">Video url</label>
-      <input type="url" id="video">
-      <label for="subs">Subtitles url</label>
-      <input type="url" id="subs">
-    </div>
+    <header>
+      <h1>Palomitas</h1>
+      <p class="subhead">Reproductor</p>
+    </header>
+    <form class="inputs" onsubmit="play(); return false;">
+      <div class="input-group">
+        <label for="video">URL del video</label>
+        <input type="url" id="video">
+      </div>
+      <br>
+      <div class="input-group">
+        <label for="subs">URL de los subtitulos</label>
+        <input type="url" id="subs">
+      </div>
+      <br>
+      <button class="play">&#x25b6; Play!</button>
+    </form>
+    <br>
     <!-- crossorigin anonymous is necesary for loading
          subtitles from another domain -->
     <video id="player" class="video-js vjs-default-skin vjs-minimal-skin"

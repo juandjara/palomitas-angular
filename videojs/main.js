@@ -17,7 +17,7 @@ $(document).ready(function(){
     var vid_url  = $("#video").val();
     var playerEl = $("#player");
     var controls = $(".inputs");
-    var hlscheck = $("#hlscheck").is(":checked");
+    var hlscheck = vid_url.indexOf(".m3u8") !== -1;
 
     if(!vid_url){
       alert("Please enter a video url");
