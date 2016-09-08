@@ -1,14 +1,14 @@
 {
   "name": "palomitasClient2",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "dependencies": {
     "build-control": "^0.3.8"
   },
   "scripts": {
-    "start":  "gulp serve",
-    "build":  "gulp build",
+    "start": "gulp serve",
+    "build": "gulp build",
     "deploy": "gulp deploy",
-    "test":   "gulp test"
+    "test": "gulp test"
   },
   "devDependencies": {
     "browser-sync": "~2.9.11",
