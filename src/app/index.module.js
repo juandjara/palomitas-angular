@@ -7,7 +7,8 @@
       'ui.bootstrap', 
       'toastr', 
       'ngLodash',
-      'duScroll'
+      'duScroll',
+      'btford.socket-io'
     ]);
 
 })();

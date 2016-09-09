@@ -6,9 +6,13 @@
     .controller('ShowController', ShowController);
     
   /** @ngInject */
-  function ShowController($stateParams, $http, $httpParamSerializer, lodash, $window, $rootScope){
-    var vm = this;
-    var _  = lodash;
+  function ShowController($stateParams, $http, $httpParamSerializer, 
+                          $window, $document, $rootScope, $log,
+                          lodash, torrentSocket){
+    var vm     = this;
+    var _      = lodash;
+    var socket = torrentSocket;
+    var playerUrl = "https://palomitas-player.fuken.xyz";      
     
     vm.id = $stateParams.id;
     vm.show     = {};
@@ -18,6 +22,7 @@
     vm.selectedEpisode = {};
     vm.selectedLang    = "";
     vm.selectedTorrentIndex = 0;
+    vm.torrents = [];
     vm.showMagnet = false;
     vm.loading    = false;
 
@@ -37,30 +42,52 @@
     
     function setEpisode(ep){
       vm.selectedEpisode = ep;
-      var el = document.querySelector(".episodes");
+      var el = $document[0].querySelector(".episodes");
       angular.element(el).scrollLeft($window.innerWidth, 400);
     }
     
     function scrollBack(){
-      var el = document.querySelector(".episodes");
+      var el = $document[0].querySelector(".episodes");
       angular.element(el).scrollLeft(0, 400);
     }
     
-    function getVideoLink(){
-      postSelectedTorrentLink().then(function(infoHash){
-
-      });
+    function checkTorrentDownloaded(hash){
+      return vm.torrents.filter(function(elem){
+        return elem.infoHash === hash;
+      }).length > 0;
     }
 
-    function postSelectedTorrentLink(){
+    function getVideoLink(){
+      vm.loading = true;
+      
       var link = vm.selectedEpisode.torrents[vm.selectedTorrentIndex].url;
-      var playerBaseUrl = "https://palomitas-player.fuken.xyz";
-      var url  = playerBaseUrl+"/torrents";
-      var data = {link: link};
+      var postUrl  = playerUrl+"/torrents";
+      var postData = {link: link};
 
-      return $http.post(url, data).then(function(res){
+      $http.post(postUrl, postData).then(function(res){
         return res.data.infoHash;
-      });
+      }).then(onLinkPosted);
+
+      function onLinkPosted(hash){
+        if(checkTorrentDownloaded(hash)){
+          onLinkReady();          
+        }else{
+          socket.once('interested', onLinkReady);
+        }
+      }
+
+      function onLinkReady(hash){
+        $log.debug("ShowController: torrent link listo");
+        var torrentUrl = playerUrl+"/torrents/"+hash+"/";
+        $http.get(torrentUrl).then(function(res){
+          var files = res.data.files;
+          var biggestFile = files.reduce(function(prev, next){
+            return prev.length > next.length ? prev : next;
+          });
+          vm.loading = false;
+          vm.videoUrl = playerUrl+biggestFile.link;
+        })
+      }
     }
 
     function loadSubtitles(episode){
@@ -83,12 +110,21 @@
     
     function activate(){
       var api = "https://api-fetch.website/tv/";
-      var url = api+"/show/"+vm.id;
-      $http.get(url).then(function(res){
+      var showUrl = api+"/show/"+vm.id;
+      $http.get(showUrl).then(function(res){
         vm.show = res.data;
         vm.episodes = getEpisodes(res.data);
         vm.selectedSeason = vm.episodes[0].episodes;
         vm.selectedEpisode = vm.selectedSeason[0];
+      });
+      
+      var torrentsUrl = playerUrl+"/torrents";
+      $http.get(torrentsUrl).then(function(res){
+        vm.torrents = res.data;
+      });
+      
+      socket.once('connect', function(){
+        $log.debug("ShowController: conectado a socket.io");
       });
     }
     
