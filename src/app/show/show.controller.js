@@ -17,6 +17,7 @@
     vm.selectedSeason  = [];
     vm.selectedEpisode = {};
     vm.selectedLang    = "";
+    vm.selectedTorrentIndex = 0;
     vm.showMagnet = false;
     vm.loading    = false;
 
@@ -24,6 +25,7 @@
     vm.setEpisode = setEpisode;    
     vm.scrollBack = scrollBack;
     vm.loadSubtitles = loadSubtitles;
+    vm.getVideoLink = getVideoLink;
 
     activate();
     
@@ -44,6 +46,23 @@
       angular.element(el).scrollLeft(0, 400);
     }
     
+    function getVideoLink(){
+      postSelectedTorrentLink().then(function(infoHash){
+
+      });
+    }
+
+    function postSelectedTorrentLink(){
+      var link = vm.selectedEpisode.torrents[vm.selectedTorrentIndex].url;
+      var playerBaseUrl = "https://palomitas-player.fuken.xyz";
+      var url  = playerBaseUrl+"/torrents";
+      var data = {link: link};
+
+      return $http.post(url, data).then(function(res){
+        return res.data.infoHash;
+      });
+    }
+
     function loadSubtitles(episode){
       vm.langs = $rootScope.langs;
       var api = "https://sub-down.fuken.xyz";

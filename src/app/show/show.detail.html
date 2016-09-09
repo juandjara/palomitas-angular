@@ -58,7 +58,7 @@
       </p>
       <p>{{vm.selectedEpisode.overview}} </p>
       <br>
-      <uib-tabset>
+      <uib-tabset active="vm.selectedTorrentIndex">
         <uib-tab ng-repeat="(type, torrent) in vm.selectedEpisode.torrents"
                  index="$index" heading="{{type}}" ng-if="type != 0">
           <div class="tab-inner">
@@ -97,11 +97,9 @@
       <button class="btn btn-primary btn-block" ng-click="vm.loadSubtitles(vm.selectedEpisode)">
         <span class="glyphicon glyphicon-globe"></span> Buscar subtitulos
       </button>
-      <!--
-      <button class="btn btn-primary btn-block">
+      <button class="btn btn-primary btn-block" ng-click="vm.getVideoLink()">
         <span class="glyphicon glyphicon-link"></span> Obtener enlace del video
       </button>
-      -->
       <button class="btn btn-primary btn-block" ng-click="vm.showMagnet = true;">
         <span class="glyphicon glyphicon-magnet"></span> Obtener enlace magnet
       </button>
