@@ -19,11 +19,11 @@
     function activate(){
       $http.get(api+"/shows")
         .then(function(res){
-          vm.showData = res.data.map(function(elem){
-            elem.show.image = lodash.keys(elem.show.image).map(function(key){
-               elem.show.image[key] = elem.show.image[key].replace("http", "https");
+          vm.showData = res.data.map(function(show){
+            lodash.keys(show.image).forEach(function(key){
+               show.image[key] = show.image[key].replace("http", "https");
             });
-            return elem;
+            return show;
           });
           vm.error = null;
         })
