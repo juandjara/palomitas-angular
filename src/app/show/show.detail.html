@@ -115,9 +115,9 @@
       <button class="btn btn-primary btn-block" ng-click="vm.showMagnet = true;">
         <span class="glyphicon glyphicon-magnet"></span> Obtener enlace magnet
       </button>
+      <h3>Subtitulos</h3>      
       <div class="form-group" ng-show="vm.subtitles"
            style="margin-top: 1em; display: flex; align-items: center">
-        <h3>Subtitulos</h3>
         <label for="langs" style="margin-right: 0.5em">Idioma</label>
         <select ng-model="vm.selectedLang" class="form-control" name="langs" id="langs">
           <option ng-value="lang.isoId" ng-repeat="lang in vm.langs">
