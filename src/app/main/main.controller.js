@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(toastr, $http) {
+  function MainController(toastr, $http, lodash) {
     var vm = this;
     var api = "https://tvapi.fuken.xyz"
 
@@ -14,24 +14,22 @@
     vm.showData = null;
     vm.error = null;
 
-    vm.showToastr = showToastr;
-    vm.showlist = function(){};
-
     activate();
 
     function activate(){
       $http.get(api+"/shows")
         .then(function(res){
-          vm.showData = res.data;
+          vm.showData = res.data.map(function(elem){
+            elem.show.image = lodash.keys(elem.show.image).map(function(key){
+               elem.show.image[key] = elem.show.image[key].replace("http", "https");
+            });
+            return elem;
+          });
           vm.error = null;
         })
         .catch(function(err){
           vm.error = err;
         });
-    }
-
-    function showToastr() {
-      toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
     }
 
   }
