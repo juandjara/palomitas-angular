@@ -82,13 +82,15 @@
       <p>
         <h3>Instrucciones para el streaming</h3>
         <ol>
-          <li>Obtener enlace de video desde esta pagina</li>
+          <li>Obtener enlace de video desde esta pagina o desde el
+            <a target="_blank" href="https://palomitas-player.fuken.xyz">descargador</a>
+          </li>
           <li>Obtener subtitulos desde esta pagina. 
               Copiar enlace de subtitulos en formato VTT</li>
           <li>Ir al <a target="_blank" href="videojs/">reproductor</a> 
           <li>Pegar los enlaces de subtitulos y video cada uno en su lugar
-              (solo marcar el checkbox si el video ha sido convertido a la extension .m3u8)</li>            
-          <li>Pulsar el botón grande y verde</li>
+              (solo marcar el checkbox si el video ha sido convertido al formato HLS)</li>            
+          <li>Pulsar el botón grande y verde y disfrutar del espect&aacute;lo.</li>
         </ol>
         <p><strong>Bonus: </strong>tambien puede usar el enlace de video  
            para ver el video en un reproductor como <strong>VLC</strong> 
@@ -97,6 +99,11 @@
       <!--
       <button class="btn btn-success btn-block">
         <span class="glyphicon glyphicon-play"></span> Reproducir        
+      </button>
+      -->
+      <!--
+      <button class="btn btn-success btn-block">
+        <span class="glyphicon glyphicon-cog"></span> Convertir al formato HLS        
       </button>
       -->
       <button class="btn btn-primary btn-block" ng-click="vm.loadSubtitles(vm.selectedEpisode)">
@@ -110,6 +117,7 @@
       </button>
       <div class="form-group" ng-show="vm.subtitles"
            style="margin-top: 1em; display: flex; align-items: center">
+        <h3>Subtitulos</h3>
         <label for="langs" style="margin-right: 0.5em">Idioma</label>
         <select ng-model="vm.selectedLang" class="form-control" name="langs" id="langs">
           <option ng-value="lang.isoId" ng-repeat="lang in vm.langs">
@@ -140,7 +148,7 @@
             </p>
           </div>  
         </li> 
-      </div>
+      </ul>
     </div>
   </div>
 </div>

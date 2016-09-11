@@ -42,6 +42,10 @@
     
     function setEpisode(ep){
       vm.selectedEpisode = ep;
+      vm.showMagnet = false;
+      vm.videoUrl   = "";
+      vm.subtitles  = [];
+
       var el = $document[0].querySelector(".episodes");
       angular.element(el).scrollLeft($window.innerWidth, 400);
     }
@@ -58,7 +62,8 @@
     }
 
     function getVideoLink(){
-      vm.loading = true;
+      vm.loading  = true;
+      vm.videoUrl = "";
       
       var link = vm.selectedEpisode.torrents[vm.selectedTorrentIndex].url;
       var postUrl  = playerUrl+"/torrents";
@@ -99,7 +104,8 @@
         episode: episode.episode
       });
 
-      vm.loading = true;
+      vm.loading   = true;
+      vm.subtitles = [];
       $http.get(url).then(function onSubtitles(res) {
         vm.subtitles = res.data;
         vm.loading = false;
