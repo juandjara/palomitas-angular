@@ -1,6 +1,6 @@
 {
   "name": "palomitasClient2",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "dependencies": {
     "build-control": "^0.3.8"
   },
