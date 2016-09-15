@@ -39,8 +39,8 @@
         var promises = [];
 
         showIds.forEach(function(id){
-          var api = "http://api.tvmaze.com/";
-          var showUrl = api+"lookup/shows?imdb="+id;
+          var api = "https://tvapi.fuken.xyz/";
+          var showUrl = api+"lookup?imdb="+id;
           var promise = $http.get(showUrl).then(function(res){
             var show = res.data;
             lodash.keys(show.image).forEach(function(key){
