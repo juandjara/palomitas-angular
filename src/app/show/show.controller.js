@@ -132,6 +132,24 @@
       socket.once('connect', function(){
         $log.debug("ShowController: conectado a socket.io");
       });
+
+      if(typeof Storage !== "undefined"){
+        var shows = [];
+        if(localStorage.palomitas_lastShows){
+          shows = localStorage.palomitas_lastShows.split(",");
+        }
+        var found_index = shows.indexOf(vm.id);
+        if(found_index !== -1){
+          shows.splice(found_index, 1);
+        }
+        shows.unshift(vm.id);
+        if(shows.length > 4){
+          shows.pop();
+        }
+        localStorage.palomitas_lastShows = shows;
+      }else{
+        $log.debug("localStorage not supported :c");
+      }
     }
     
     function getEpisodes(show){

@@ -27,8 +27,31 @@
     </h3>
   </div>
   
+  <div class="row" ng-show="vm.lastShows">
+    <h1 class="col-sm-12 text-center header-shadow">&Uacute;ltimamente has visto</h1>
+    <div class="col-sm-12 shows">
+      <div class="show-card" ng-repeat="show in vm.lastShows">
+        <div class="show-img">
+          <img ng-src="{{show.image.medium}}" alt="{{show.name}}">
+        </div>
+        <div class="overlay">
+          <div class="ribbon opensans">
+            <p>{{show.name}} </p>
+            <p class="badge" style="font-size: smaller">
+              {{show.rating.average}} / 10
+            </p>
+            <a ng-href="#/show/{{show.externals.imdb}}" class="no-br btn btn-lg btn-success">Detalles</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- Solo se muestra mientras se realiza la peticion inicial -->
-  <h1 style="color: lightgrey" ng-hide="vm.showData">Loading...</h1>
+  <h1 style="color: lightgrey" ng-hide="vm.showData">
+    <p>Loading</p>
+    <spinner></spinner>
+  </h1>
   <!-- Solo se muestra si la peticion inicial tuvo exito -->
   <div class="row" ng-show="vm.showData">
     <h1 class="col-sm-12 header-shadow">Las series m&aacute;s populares:</h1>
