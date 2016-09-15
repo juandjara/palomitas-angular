@@ -34,15 +34,14 @@
         <div class="show-img">
           <img ng-src="{{show.image.medium}}" alt="{{show.name}}">
         </div>
-        <div class="overlay">
+        <a ng-href="#/show/{{show.externals.imdb}}" class="overlay">
           <div class="ribbon opensans">
             <p>{{show.name}} </p>
             <p class="badge" style="font-size: smaller">
               {{show.rating.average}} / 10
             </p>
-            <a ng-href="#/show/{{show.externals.imdb}}" class="no-br btn btn-lg btn-success">Detalles</a>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
@@ -60,15 +59,14 @@
         <div class="show-img">
           <img ng-src="{{show.image.medium}}" alt="{{show.name}}">
         </div>
-        <div class="overlay">
+        <a ng-href="#/show/{{show.externals.imdb}}" class="overlay">
           <div class="ribbon opensans">
             <p>{{show.name}} </p>
             <p class="badge" style="font-size: smaller">
               {{show.rating.average}} / 10
             </p>
-            <a ng-href="#/show/{{show.externals.imdb}}" class="no-br btn btn-lg btn-success">Detalles</a>
           </div>
-        </div>
+        </a>
       </div>
     </div>
   </div>
