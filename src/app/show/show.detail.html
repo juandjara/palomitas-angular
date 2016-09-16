@@ -60,7 +60,8 @@
       <br>
       <uib-tabset active="vm.selectedTorrentIndex">
         <uib-tab ng-repeat="(type, torrent) in vm.selectedEpisode.torrents"
-                 index="$index" heading="{{type}}" ng-if="type != 0">
+                 index="$index" heading="{{type}}" ng-if="type != 0"
+                 ng-click="vm.selectedTorrentIndex = $index">
           <div class="tab-inner">
             <p>
               seeds: {{torrent.seeds}} | peers: {{torrent.peers}}
