@@ -75,7 +75,7 @@
 
       function onLinkPosted(hash){
         if(checkTorrentDownloaded(hash)){
-          onLinkReady();          
+          onLinkReady(hash);          
         }else{
           socket.once('interested', onLinkReady);
         }
