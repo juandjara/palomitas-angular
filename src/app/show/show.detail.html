@@ -11,7 +11,7 @@
           {{vm.show.rating.percentage / 10}} / 10
         </span>
       </h1>
-      <h4> 
+      <h4>
         <p>
           {{vm.show.year}} - {{vm.show.status}}
         </p>
@@ -27,7 +27,7 @@
   </div>
 </div>
 <div class="opensans" style="margin-top: 1em; padding: 0 1em">
-  <h1 style="margin-top: 0; margin-bottom: .5em">Episodios</h1>      
+  <h1 style="margin-top: 0; margin-bottom: .5em">Episodios</h1>
   <div class="episodes">
     <div class="episode-selector">
       <div class="season-list btn-group-vertical">
@@ -35,12 +35,12 @@
                 ng-repeat="season in vm.episodes"
                 ng-click="vm.selectedSeason = season.episodes">
           Temporada {{season.number}}
-        </button>  
+        </button>
       </div>
       <ul class="episode-list list-group" style="margin-left: 1em">
         <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selectedSeason">
           <a href ng-click="vm.setEpisode(ep)">
-            {{ep.season}}x{{ep.episode}} - {{ep.title}}                    
+            {{ep.season}}x{{ep.episode}} - {{ep.title}}
           </a>
         </li>
       </ul>
@@ -53,7 +53,7 @@
       </button>
       <h2 style="margin-top: 0.2em">{{vm.selectedEpisode.title}} </h2>
       <p style="color: grey">
-        Season {{vm.selectedEpisode.season}} 
+        Season {{vm.selectedEpisode.season}}
         Episode {{vm.selectedEpisode.episode}}
       </p>
       <p>{{vm.selectedEpisode.overview}} </p>
@@ -75,48 +75,53 @@
                 Video
               </p>
               <pre class="pre-wrap">{{vm.videoUrl}}</pre>
-            </div>         
+            </div>
           </div>
-        </uib-tab>  
+        </uib-tab>
       </uib-tabset>
-      <spinner ng-show="vm.loading"></spinner>      
+      <p class="alert alert-warning" ng-hide="vm.videoUrl">
+        Por culpa de CloudFlare, la conexion al WebSocket esta rota,
+        asi que el boton de obtener enlace de video no funcionara de momento.
+        Aun asi, siempre se puede usar el <a href="https://palomitas-player.fuken.xyz">Descargador</a>
+      </p>
+      <spinner ng-show="vm.loading"></spinner>
       <p>
         <h3>Instrucciones para el streaming</h3>
         <ol>
           <li>Obtener enlace de video desde esta pagina o desde el
             <a target="_blank" href="https://palomitas-player.fuken.xyz">descargador</a>
           </li>
-          <li>Obtener subtitulos desde esta pagina. 
+          <li>Obtener subtitulos desde esta pagina.
               Copiar enlace de subtitulos en formato VTT</li>
-          <li>Ir al <a target="_blank" href="videojs/">reproductor</a> 
+          <li>Ir al <a target="_blank" href="videojs/">reproductor</a>
           <li>Pegar los enlaces de subtitulos y video cada uno en su lugar
-              (solo marcar el checkbox si el video ha sido convertido al formato HLS)</li>            
+              (solo marcar el checkbox si el video ha sido convertido al formato HLS)</li>
           <li>Pulsar el botón grande y verde y disfrutar del espect&aacute;lo.</li>
         </ol>
-        <p><strong>Bonus: </strong>tambien puede usar el enlace de video  
-           para ver el video en un reproductor como <strong>VLC</strong> 
+        <p><strong>Bonus: </strong>tambien puede usar el enlace de video
+           para ver el video en un reproductor como <strong>VLC</strong>
            o <strong>MPV</strong> que soporte abrir enlaces de red</p>
       </p>
       <!--
       <button class="btn btn-success btn-block">
-        <span class="glyphicon glyphicon-play"></span> Reproducir        
+        <span class="glyphicon glyphicon-play"></span> Reproducir
       </button>
       -->
       <!--
       <button class="btn btn-success btn-block">
-        <span class="glyphicon glyphicon-cog"></span> Convertir al formato HLS        
+        <span class="glyphicon glyphicon-cog"></span> Convertir al formato HLS
       </button>
       -->
       <button class="btn btn-primary btn-block" ng-click="vm.loadSubtitles(vm.selectedEpisode)">
         <span class="glyphicon glyphicon-globe"></span> Buscar subtitulos
       </button>
-      <button class="btn btn-primary btn-block" ng-click="vm.getVideoLink()">
+      <button disabled class="btn btn-primary btn-block" ng-click="vm.getVideoLink()">
         <span class="glyphicon glyphicon-link"></span> Obtener enlace del video
       </button>
       <button class="btn btn-primary btn-block" ng-click="vm.showMagnet = true;">
         <span class="glyphicon glyphicon-magnet"></span> Obtener enlace magnet
       </button>
-      <h3  ng-show="vm.subtitles">Subtitulos</h3>      
+      <h3  ng-show="vm.subtitles">Subtitulos</h3>
       <div ng-show="vm.subtitles"
            style="margin: 1em 0; display: flex; align-items: center">
         <label for="langs" style="margin-right: 0.5em">Idioma</label>
@@ -132,7 +137,7 @@
           <div style="flex: 0 1 65%">
             <p class="pre-wrap">{{sub.subFilename}}</p>
             Descargar en <a class="pre-wrap" ng-href="{{sub.links.srt}}">srt</a>
-            o <a class="pre-wrap" ng-href="{{sub.links.vtt}}">vtt</a>                        
+            o <a class="pre-wrap" ng-href="{{sub.links.vtt}}">vtt</a>
           </div>
           <div style="flex: 1 0 35%; margin-left: 1em">
             <p>
@@ -147,8 +152,8 @@
               <span title="Fecha de subida" class="glyphicon glyphicon-calendar"></span>
               {{sub.date.toLocaleString()}}
             </p>
-          </div>  
-        </li> 
+          </div>
+        </li>
       </ul>
     </div>
   </div>
