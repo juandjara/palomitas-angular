@@ -1,19 +1,19 @@
 (function(){
   'use strict';
-  
+
   angular
     .module('palomitasClient2')
     .controller('ShowController', ShowController);
-    
+
   /** @ngInject */
-  function ShowController($stateParams, $http, $httpParamSerializer, 
+  function ShowController($stateParams, $http, $httpParamSerializer,
                           $window, $document, $rootScope, $log,
                           lodash, torrentSocket){
     var vm     = this;
     var _      = lodash;
     var socket = torrentSocket;
-    var playerUrl = "https://palomitas-player.fuken.xyz";      
-    
+    var playerUrl = "https://palomitas-player.fuken.xyz";
+
     vm.id = $stateParams.id;
     vm.show     = {};
     vm.episodes = [];
@@ -27,19 +27,19 @@
     vm.loading    = false;
 
     vm.space = space;
-    vm.setEpisode = setEpisode;    
+    vm.setEpisode = setEpisode;
     vm.scrollBack = scrollBack;
     vm.loadSubtitles = loadSubtitles;
     vm.getVideoLink = getVideoLink;
 
     activate();
-    
+
     // PUBLIC METHODS
-    
+
     function space(obj){
       return angular.toJson(obj, true);
     }
-    
+
     function setEpisode(ep){
       vm.selectedEpisode = ep;
       vm.showMagnet = false;
@@ -49,12 +49,12 @@
       var el = $document[0].querySelector(".episodes");
       angular.element(el).scrollLeft($window.innerWidth, 400);
     }
-    
+
     function scrollBack(){
       var el = $document[0].querySelector(".episodes");
       angular.element(el).scrollLeft(0, 400);
     }
-    
+
     function checkTorrentDownloaded(hash){
       return vm.torrents.filter(function(elem){
         return elem.infoHash === hash;
@@ -64,7 +64,7 @@
     function getVideoLink(){
       vm.loading  = true;
       vm.videoUrl = "";
-      
+
       var link = vm.selectedEpisode.torrents[vm.selectedTorrentIndex].url;
       var postUrl  = playerUrl+"/torrents";
       var postData = {link: link};
@@ -75,7 +75,7 @@
 
       function onLinkPosted(hash){
         if(checkTorrentDownloaded(hash)){
-          onLinkReady(hash);          
+          onLinkReady(hash);
         }else{
           socket.once('interested', onLinkReady);
         }
@@ -113,9 +113,9 @@
     }
 
     // PRIVATE METHODS
-    
+
     function activate(){
-      var api = "https://api-fetch.website/tv/";
+      var api = "https://popcorntime.ws/api/eztv/";
       var showUrl = api+"/show/"+vm.id;
       $http.get(showUrl).then(function(res){
         vm.show = res.data;
@@ -123,12 +123,12 @@
         vm.selectedSeason = vm.episodes[0].episodes;
         vm.selectedEpisode = vm.selectedSeason[0];
       });
-      
+
       var torrentsUrl = playerUrl+"/torrents";
       $http.get(torrentsUrl).then(function(res){
         vm.torrents = res.data;
       });
-      
+
       socket.once('connect', function(){
         $log.debug("ShowController: conectado a socket.io");
       });
@@ -151,9 +151,11 @@
         $log.debug("localStorage not supported :c");
       }
     }
-    
+
     function getEpisodes(show){
-      var eps = show.episodes;
+      var eps = show.episodes.filter(function(elem){
+        return elem.torrents[0].url;
+      });
       var grouped = _.groupBy(eps, 'season');
       var moreGrouped = Object.keys(grouped).map(function(index){
         var season = grouped[index];
@@ -162,9 +164,9 @@
       });
       return moreGrouped;
     }
-    
-    
-    
+
+
+
   }
-  
+
 })();
