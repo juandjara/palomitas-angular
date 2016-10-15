@@ -1,9 +1,7 @@
 {
   "name": "palomitasClient2",
   "version": "0.2.18",
-  "dependencies": {
-    "build-control": "^0.3.8"
-  },
+  "dependencies": {},
   "scripts": {
     "start": "gulp serve",
     "build": "gulp build",
@@ -21,6 +19,7 @@
     "gulp-angular-filesort": "~1.1.1",
     "gulp-angular-templatecache": "~1.8.0",
     "gulp-autoprefixer": "~3.0.2",
+    "gulp-bump": "^2.4.0",
     "gulp-cssnano": "~2.1.1",
     "gulp-eslint": "~1.0.0",
     "gulp-filter": "~3.0.1",
@@ -37,6 +36,7 @@
     "gulp-sass": "~2.0.4",
     "gulp-size": "~2.0.0",
     "gulp-sourcemaps": "~1.6.0",
+    "gulp-surge": "^0.1.0",
     "gulp-uglify": "~1.4.1",
     "gulp-useref": "~3.0.3",
     "gulp-util": "~3.0.6",
@@ -51,6 +51,7 @@
     "lodash": "~3.10.1",
     "main-bower-files": "~2.9.0",
     "phantomjs": "~1.9.18",
+    "run-sequence": "^1.2.2",
     "uglify-save-license": "~0.4.1",
     "wiredep": "~2.2.2",
     "wrench": "~1.5.8"

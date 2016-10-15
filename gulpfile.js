@@ -3,6 +3,7 @@
  *  The gulp tasks are split into several files in the gulp directory
  *  because putting it all here was too long
  */
+/* global require:false */
 
 'use strict';
 

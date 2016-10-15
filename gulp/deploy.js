@@ -1,27 +1,23 @@
 'use strict';
 
 var gulp = require('gulp');
-var path = require('path');
-var BuildControl = require('build-control').BuildControl;
+var bump = require('gulp-bump');
+var runSequence = require('run-sequence').use(gulp);
+var surge = require('gulp-surge');
+var conf = require('./conf');
 
-gulp.task('deploy', ['build'], function(done){
-  var options = {
-    cwd: path.join(__dirname, '..', 'dist'),
-    branch: 'master',
-    versionBump: 'patch',
-    remote: {
-	    repo: 'git@github.com:juandjara/palomitas-angular',
-      branch: 'gh-pages'
-    },
-    clean:{
-      after: true,
-    }
-  };  
-  var bc = new BuildControl(options);
+gulp.task("bump", function () {
+    return gulp.src(["../bower.json", "../package.json"])
+        .pipe(bump({ type: "patch" }))
+        .pipe(gulp.dest("./"));
+});
+gulp.task('surge', function(){
+  return surge({
+    project: conf.paths.dist,
+    domain: 'palomitas.fuken.xyz'
+  });
+})
 
-  bc.prepublishCheck();
-  bc.npm.bump();
-  bc.run();
-
-  done();
+gulp.task('deploy', function(done){
+  runSequence('build', 'bump', 'surge', done);
 });
