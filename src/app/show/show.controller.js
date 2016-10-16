@@ -115,7 +115,7 @@
     // PRIVATE METHODS
 
     function activate(){
-      var api = "https://popcorntime.ws/api/eztv/";
+      var api = "https://anticorsproxy.herokuapp.com/https://popcorntime.ws/api/eztv/";
       var showUrl = api+"/show/"+vm.id;
       $http.get(showUrl).then(function(res){
         vm.show = res.data;
