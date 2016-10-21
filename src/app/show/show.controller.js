@@ -117,8 +117,10 @@
     function activate(){
       var api = "https://anticorsproxy.herokuapp.com/https://popcorntime.ws/api/eztv/";
       var showUrl = api+"/show/"+vm.id;
+      vm.show.loading = true;
       $http.get(showUrl).then(function(res){
         vm.show = res.data;
+        vm.show.loading = false;
         vm.episodes = getEpisodes(res.data);
         vm.selectedSeason = vm.episodes[0].episodes;
         vm.selectedEpisode = vm.selectedSeason[0];

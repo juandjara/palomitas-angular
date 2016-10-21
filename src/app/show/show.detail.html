@@ -28,7 +28,8 @@
 </div>
 <div class="opensans" style="margin-top: 1em; padding: 0 1em">
   <h1 style="margin-top: 0; margin-bottom: .5em">Episodios</h1>
-  <div class="episodes">
+  <spinner ng-show="vm.show.loading"></spinner>
+  <div class="episodes" ng-hide="vm.show.loading">
     <div class="episode-selector">
       <div class="season-list btn-group-vertical">
         <button class="btn btn-primary"
@@ -79,11 +80,6 @@
           </div>
         </uib-tab>
       </uib-tabset>
-      <p class="alert alert-warning" ng-hide="vm.videoUrl">
-        Por culpa de CloudFlare, la conexion al WebSocket esta rota,
-        asi que el boton de obtener enlace de video no funcionara de momento.
-        Aun asi, siempre se puede usar el <a href="https://palomitas-player.fuken.xyz">Descargador</a>
-      </p>
       <spinner ng-show="vm.loading"></spinner>
       <p>
         <h3>Instrucciones para el streaming</h3>
@@ -115,7 +111,7 @@
       <button class="btn btn-primary btn-block" ng-click="vm.loadSubtitles(vm.selectedEpisode)">
         <span class="glyphicon glyphicon-globe"></span> Buscar subtitulos
       </button>
-      <button disabled class="btn btn-primary btn-block" ng-click="vm.getVideoLink()">
+      <button class="btn btn-primary btn-block" ng-click="vm.getVideoLink()">
         <span class="glyphicon glyphicon-link"></span> Obtener enlace del video
       </button>
       <button class="btn btn-primary btn-block" ng-click="vm.showMagnet = true;">

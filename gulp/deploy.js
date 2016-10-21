@@ -14,7 +14,7 @@ gulp.task("bump", function () {
 gulp.task('surge', function(){
   return surge({
     project: conf.paths.dist,
-    domain: 'palomitas.surge.sh'
+    domain: 'palomitas.fuken.xyz'
   });
 })
 

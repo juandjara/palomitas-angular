@@ -1,4 +1,4 @@
-.show-details{  
+.show-details{
   display: flex;
   flex-direction: column;
   position: relative;
@@ -11,14 +11,14 @@
       max-width: 100%;
     }
   }
-  
+
   .overlay{
     @media(min-width: 768px){
       position: absolute;
       top: 0;
       left: 0;
     }
-    
+
     display: flex;
     width: 100%;
     background-color: rgba(0,0,0, 0.65);
@@ -32,7 +32,7 @@
       overflow: auto;
       max-height: 100%;
       @media(max-width: 767px){
-        max-height: 15em;                
+        max-height: 15em;
       }
       h1{
         margin-top: 0 !important;
@@ -44,7 +44,7 @@
       margin-bottom: -0.5em;
       padding-left: 1em;
       //max-height: 100%;
-    }    
+    }
   }
 }
 
@@ -63,7 +63,7 @@
       a{
         color: $bg-color;
         &:hover{
-          color: $link-color;          
+          color: $link-color;
         }
       }
     }
