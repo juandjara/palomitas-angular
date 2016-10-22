@@ -9,8 +9,11 @@
   function ShowService($http, $httpParamSerializer, $q, $log,
                        torrentSocket, lodash) {
     var playerUrl = "https://palomitas-dl.fuken.xyz";
+    var tvapi     = "https://tvapi.fuken.xyz"
     var service = {
+      getTvapiList: getTvapiList,
       getPopcornShow: getPopcornShow,
+      getLastWatched: getLastWatched,
       getTorrents: getTorrents,
       setLastWatched: setLastWatched,
       getSubtitles: getSubtitles,
@@ -21,6 +24,50 @@
     return service;
 
     ////////////////
+
+    function getTvapiList(){
+      return $http.get(tvapi+"/shows")
+      .then(function(res){
+        var showData = res.data.map(function(show){
+          lodash.keys(show.image).forEach(function(key){
+              show.image[key] = show.image[key].replace("http", "https");
+          });
+          return show;
+        });
+        return showData;
+      })
+    }
+
+    function getLastWatched(){
+      if(typeof Storage !== "undefined"){
+        if(!localStorage.palomitas_lastShows){
+          return [];
+        }
+
+        var showIds = localStorage.palomitas_lastShows.split(",");
+        var promises = [];
+
+        showIds.forEach(function(id){
+          var api = "https://tvapi.fuken.xyz/";
+          var showUrl = api+"lookup?imdb="+id;
+          var promise = $http.get(showUrl).then(function(res){
+            var show = res.data;
+            lodash.keys(show.image).forEach(function(key){
+              show.image[key] = show.image[key].replace("http", "https");
+            });
+            return show;
+          });
+          promises.push(promise);
+        });
+
+        return $q.all(promises);
+      }else{
+        var msg = "Este navegador no soporta localStorage :c";
+        $log.debug(msg);
+        return $q.reject(msg);
+      }
+    }
+
     function getEpisodes(show){
       var eps = show.episodes.filter(function(elem){
         return elem.torrents[0].url;
