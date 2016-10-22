@@ -8,6 +8,24 @@ body{
   max-width: 768px;
   margin: auto;
 }
+.row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.row nav a{
+  color: #5cb85c;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+}
+.row nav a.active{
+  background-color: #5cb85c;
+  color: white;
+}
+.row nav a:hover:not(.active){
+  background-color: white;
+}
 header{
   text-align: center;
   border-bottom: 1px solid #eee;
