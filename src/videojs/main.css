@@ -3,19 +3,29 @@ html, body {
 }
 body{
   font-family: sans-serif;
-  background-color: #eee;
+  background-color: #2c3e50;
+  color: white;
   max-width: 768px;
   margin: auto;
 }
 header{
   text-align: center;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 1em;
+}
+header img {
+  vertical-align: middle;
+  height: 2em;
+  width:  2em;
+  margin-right: 0.5em;
 }
 header h1{
-  margin-bottom: 0;
+  font-weight: 500;
+  font-size: 1.5em;
 }
 header .subhead{
   font-weight: 300;
-  font-size: 1.5em;
+  font-size: 1.5rem;
   color: #888;
   margin-top: 0;
 }
@@ -41,7 +51,7 @@ header .subhead{
   color: white;
   flex-shrink: 0;
   margin-right: 0.5em;
-  box-shadow: rgba(0,0,0, 0.5) 1px 1px 3px 0;
+  box-shadow: rgba(200,200,200, 0.5) 1px 1px 3px 0;
 }
 .input-group button:hover{
   margin-left: 0.5em;
