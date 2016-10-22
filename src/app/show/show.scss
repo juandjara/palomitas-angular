@@ -66,6 +66,8 @@
       flex: 1 0 50%;
       a{
         color: $bg-color;
+        display: block;
+        width: 100%;
         &:hover{
           color: $link-color;
         }
