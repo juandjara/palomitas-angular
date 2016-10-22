@@ -39,7 +39,8 @@
         </button>
       </div>
       <ul class="episode-list list-group" style="margin-left: 1em">
-        <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selectedSeason">
+        <li class="list-group-item" style="color: black" ng-repeat="ep in vm.selectedSeason"
+          ng-class="{'active': vm.selectedEpisode === ep}">
           <a href ng-click="vm.setEpisode(ep)">
             {{ep.season}}x{{ep.episode}} - {{ep.title}}
           </a>

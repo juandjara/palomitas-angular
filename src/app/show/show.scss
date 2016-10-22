@@ -64,13 +64,22 @@
     max-width: 100%;
     .episode-list{
       flex: 1 0 50%;
+      li{
+        padding: 0 15px;
+        border: none;
+        &:hover, &.active{
+          background-color: #f7f7f7;
+          a{
+            color: $link-color;
+          }
+        }
+      }
       a{
+        text-decoration: none;
+        padding: 10px 0;
         color: $bg-color;
         display: block;
         width: 100%;
-        &:hover{
-          color: $link-color;
-        }
       }
     }
     @media(max-width: 767px){
