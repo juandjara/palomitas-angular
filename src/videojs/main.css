@@ -77,7 +77,7 @@ header .subhead{
   font-weight: bolder;
   cursor: pointer;
 }
-#player{
+#player:not(.vjs-fullscreen){
   margin: auto;
   margin-bottom: 2em;
 }
