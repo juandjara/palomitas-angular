@@ -10,6 +10,7 @@ body{
 }
 .row{
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
 }
@@ -70,6 +71,12 @@ header .subhead{
   flex-shrink: 0;
   margin-right: 0.5em;
   box-shadow: rgba(200,200,200, 0.5) 1px 1px 3px 0;
+}
+.input-group #subs{
+  flex-basis: 75%;
+}
+.input-group #subs-name{
+  flex-basis: 25%;
 }
 .input-group button:hover{
   margin-left: 0.5em;
