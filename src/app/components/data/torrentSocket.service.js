@@ -8,7 +8,7 @@
 
   /* @ngInject  */
   function torrentSocket(socketFactory) {
-    var socketUrl = "https://palomitas-player.fuken.xyz:443";
+    var socketUrl = "https://palomitas-dl.fuken.xyz:443";
     var socket = io.connect(socketUrl);
 
     return socketFactory({

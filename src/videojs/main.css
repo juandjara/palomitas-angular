@@ -1,0 +1,55 @@
+html, body {
+  margin: 0;
+}
+body{
+  font-family: sans-serif;
+  background-color: #eee;
+  max-width: 768px;
+  margin: auto;
+}
+header{
+  text-align: center;
+}
+header h1{
+  margin-bottom: 0;
+}
+header .subhead{
+  font-weight: 300;
+  font-size: 1.5em;
+  color: #888;
+  margin-top: 0;
+}
+.inputs{
+  margin-top: 2em;
+}
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1em;
+}
+.input-group input{
+  padding-left: 0.5em;
+  height: 2em;
+  flex-grow: 1;
+  width: 100%;
+}
+.input-group button{
+  min-width: 80px;
+  padding: 0.6em;
+  background-color: #5cb85c;
+  border: none;
+  color: white;
+  flex-shrink: 0;
+  margin-right: 0.5em;
+  box-shadow: rgba(0,0,0, 0.5) 1px 1px 3px 0;
+}
+.input-group button:hover{
+  margin-left: 0.5em;
+  margin-right: 0;
+  font-weight: bolder;
+  cursor: pointer;
+}
+#player{
+  margin: auto;
+  margin-bottom: 2em;
+}

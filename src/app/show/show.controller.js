@@ -12,7 +12,7 @@
     var vm     = this;
     var _      = lodash;
     var socket = torrentSocket;
-    var playerUrl = "https://palomitas-player.fuken.xyz";
+    var playerUrl = "https://palomitas-dl.fuken.xyz";
 
     vm.id = $stateParams.id;
     vm.show     = {};

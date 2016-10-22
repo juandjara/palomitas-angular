@@ -8,85 +8,38 @@
     <title>video.js - palomitas</title>
     <link href="//vjs.zencdn.net/5.10.4/video-js.css" rel="stylesheet">
     <link rel="stylesheet" href="videojs-minimal-skin.css" charset="utf-8">
-    <style>
-      html. body {
-        margin: 0;
-      }
-      body{
-        font-family: sans-serif;
-        background-color: #eee;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-      header h1{
-        margin-bottom: 0;
-      }
-      header .subhead{
-        font-weight: 300;
-        font-size: 1.5em;
-        color: #888;
-        margin-top: 0;
-      }
-      .input-group {
-        text-align: left;
-      }
-      input[type="url"]{
-        width: 100%;
-      }
-      .play{
-        font-size: 1.5em;
-        text-align: center;
-        padding: 0.5em 0.75em;
-        background-color: #5cb85c;
-        color: white;
-        border: 2px solid white; 
-      }
-      .play:hover{
-        background-color: transparent;
-        border: 2px solid #5cb85c;
-        color: #5cb85c;
-      }
-      .search-icon{
-        -webkit-transform: rotate(45deg); 
-        -moz-transform: rotate(45deg); 
-        -o-transform: rotate(45deg);
-        transform: rotate(45deg);
-      }
-    </style>
+    <link rel="stylesheet" href="main.css">
   </head>
   <body>
     <header>
       <h1>Palomitas</h1>
       <p class="subhead">Reproductor</p>
     </header>
-    <form class="inputs" onsubmit="play(); return false;">
-      <div class="input-group">
-        <label for="video">URL del video</label>
-        <input placeholder="https://" type="url" id="video">
-      </div>
-      <br>
-      <div class="input-group">
-        <label for="subs">URL de los subtitulos</label>
-        <input placeholder="https://" type="url" id="subs">
-      </div>
-      <br>
-      <button class="play">&#x25b6; Play!</button>
-    </form>
-    <br>
     <!-- crossorigin anonymous is necesary for loading
          subtitles from another domain -->
     <video id="player" class="video-js vjs-default-skin vjs-minimal-skin"
-          controls width="600" height="300" crossorigin="anonymous">
+      controls width="600" height="300" crossorigin="anonymous">
     </video>
+    <form class="videoform">
+      <label for="video">Enlace de video</label>
+      <div class="input-group">
+        <input required placeholder="https://" type="url" id="video">
+        <button>Reproducir</button>
+      </div>
+    </form>
+    <form class="subsform">
+      <label for="subs">Añadir subtitulos</label>
+      <div class="input-group">
+        <input required placeholder="https://" type="url" id="subs">
+        <input placeholder="nombre" type="text" id="subs-name">
+        <button>Añadir</button>
+      </div>
+    </form>
     <script src="//vjs.zencdn.net/5.10.4/video.js"></script>
     <script src="//cdn.sc.gl/videojs-hotkeys/latest/videojs.hotkeys.min.js"></script>
     <script src="https://npmcdn.com/videojs-contrib-hls.js">
     </script>
     <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
-    
-    <script src="main.js"></script> 
+    <script src="main.js"></script>
   </body>
 </html>

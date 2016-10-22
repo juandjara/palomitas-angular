@@ -1,3 +1,5 @@
+/* global $:false, videojs:false */
+
 $(document).ready(function(){
   var options = {
     html5: {
@@ -9,14 +11,17 @@ $(document).ready(function(){
       }
     }
   };
-  window.play = play;
+  $(".subsform").on("submit", addSubs);
+  $(".videoform").on("submit", play);
+  console.debug("Reproductor de Palomitas");
 
-  function play(){
-    console.info("INFO: play funcion triggered");
+  function play(ev){
+    ev.preventDefault();
+    console.log("main: Loading video url ...");
 
-    var vid_url  = $("#video").val();
+    var controls = $(".videoform");
     var playerEl = $("#player");
-    var controls = $(".inputs");
+    var vid_url  = controls.find("input").val();
     var hlscheck = vid_url.indexOf(".m3u8") !== -1;
 
     if(!vid_url){
@@ -31,30 +36,43 @@ $(document).ready(function(){
           playerEl.append(src);
         }else{
           playerEl[0].src = vid_url;
-        }        
+        }
         videojs(playerEl[0], options, onVideoReady);
       }
     });
+
+    return false;
   }
 
   function onVideoReady(){
-    console.info("INFO: videojs is ready");
-
+    console.log("main: videojs is ready");
     var player = this;
-    var subs = $("#subs").val();
-    player.hotkeys(); // videojs hotkeys 
+    player.hotkeys();
 
-    if(subs){    
-      var trackEl = player.addRemoteTextTrack({
-        src: subs,
-        kind: "subtitles",
-        language: "es",
-        label: "Español",
-        id: "subs"
-      });
-      trackEl.track.mode = "showing";
+    if($("#subs").val()){
+      addSubs();
     }
   }
 
-  console.info("INFO: Reached end of dom loaded event");
+  function addSubs(ev){
+    if(ev) ev.preventDefault();
+
+    var subs = $("#subs");
+    var subs_url = subs.val();
+    var name = $("#subs-name").val();
+    var player = videojs.getPlayers().player;
+
+    if(subs_url && player){
+      console.log("main: loading subtitles");
+      var trackEl = player.addRemoteTextTrack({
+        src: subs_url,
+        kind: "subtitles",
+        language: name || "es",
+        label: name || "Español",
+        id: "subs-"+name
+      });
+      trackEl.track.mode = "showing";
+      subs.val("");
+    }
+  }
 });
