@@ -59,7 +59,7 @@ $(document).ready(function(){
 
     var subs = $("#subs");
     var subs_url = subs.val();
-    var name = $("#subs-name").val();
+    var name = $("#subs-name");
     var player = videojs.getPlayers().player;
 
     if(subs_url && player){
@@ -67,12 +67,13 @@ $(document).ready(function(){
       var trackEl = player.addRemoteTextTrack({
         src: subs_url,
         kind: "subtitles",
-        language: name || "es",
-        label: name || "Español",
+        language: name.val() || "es",
+        label: name.val() || "Español",
         id: "subs-"+name
       });
       trackEl.track.mode = "showing";
       subs.val("");
+      name.val("");
     }
   }
 });
