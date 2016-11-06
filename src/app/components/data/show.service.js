@@ -41,7 +41,7 @@
     function getLastWatched(){
       if(typeof Storage !== "undefined"){
         if(!localStorage.palomitas_lastShows){
-          return [];
+          return $q.resolve([]);
         }
 
         var showIds = localStorage.palomitas_lastShows.split(",");
