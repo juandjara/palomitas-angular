@@ -12,6 +12,7 @@
     vm.creationDate = 1463518051145; // Mayo 2016
     vm.showData = null;
     vm.error = null;
+    vm.lastShows = [];
 
     activate();
 
