@@ -68,25 +68,29 @@
       }
     }
 
-    function getEpisodes(show){
+    function parseEpisodes(show){
       var eps = show.episodes.filter(function(elem){
         return elem.torrents[0].url;
       });
-      var grouped = lodash.groupBy(eps, 'season');
-      var moreGrouped = lodash.keys(grouped).map(function(index){
-        var season = grouped[index];
+      var groupedEps = lodash.groupBy(eps, 'season');
+      var mappedEps  = lodash.keys(groupedEps).map(function(index){
+        var season = groupedEps[index];
         var sortedSeason = lodash.sortBy(season, 'episode');
         return { number: sortedSeason[0].season, episodes: sortedSeason };
       });
-      return moreGrouped;
+      return mappedEps;
     }
 
     function getPopcornShow(imdbId){
-      var api = "https://anticorsproxy.herokuapp.com/https://popcorntime.ws/api/eztv/";
+      //var api = "https://anticorsproxy.herokuapp.com/https://popcorntime.ws/api/eztv/";
+      var api = "https://tv.api-fetch.website";
       var showUrl = api+"/show/"+imdbId;
       return $http.get(showUrl).then(function(res){
         var show = res.data;
-        show.parsedEpisodes = getEpisodes(show);
+        if(!show) {
+          return $q.reject("ShowService.getPopcornShow received null data when calling popcorntime api");
+        }
+        show.parsedEpisodes = parseEpisodes(show);
         return show;
       });
     }

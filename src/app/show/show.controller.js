@@ -76,7 +76,13 @@
 
     function activate(){
       vm.show.loading = true;
-      ShowService.getPopcornShow(vm.id).then(function(show){
+      ShowService.getPopcornShow(vm.id)
+      .catch(function(err){
+        vm.show.loading = false;
+        vm.show.error = err;
+        throw new Error(err);
+      })
+      .then(function(show){
         vm.show = show;
         vm.show.loading = false;
         vm.episodes = show.parsedEpisodes;
