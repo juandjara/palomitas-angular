@@ -121,17 +121,17 @@
       <button class="btn btn-primary btn-block" ng-click="vm.showMagnet = true;">
         <span class="glyphicon glyphicon-magnet"></span> Obtener enlace magnet
       </button>
-      <h3  ng-show="vm.subtitles">Subtitulos</h3>
-      <div ng-show="vm.subtitles"
+      <h3  ng-show="vm.areSubsLoaded()">Subtitulos</h3>
+      <div ng-show="vm.areSubsLoaded()"
            style="margin: 1em 0; display: flex; align-items: center">
         <label for="langs" style="margin-right: 0.5em">Idioma</label>
-        <select ng-model="vm.selectedLang" class="form-control" name="langs" id="langs">
-          <option ng-value="lang.isoId" ng-repeat="lang in vm.langs">
-            {{lang.name}}
-          </option>
+        <select ng-model="vm.selectedLang"
+                ng-options="lang.isoId as lang.name for lang in vm.langs track by lang.isoId"
+                class="form-control"
+                name="langs" id="langs">
         </select>
       </div>
-      <ul class="list-group subs-list" ng-show="vm.selectedLang">
+      <ul class="list-group subs-list" ng-show="vm.areSubsLoaded()">
         <li class="list-group-item" ng-repeat="sub in vm.subtitles[vm.selectedLang]"
             style="display: flex; align-items: center">
           <div style="flex: 0 1 65%">

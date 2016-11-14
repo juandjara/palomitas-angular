@@ -12,18 +12,20 @@
     var socket = torrentSocket;
 
     vm.id = $stateParams.id;
-    vm.show     = {};
-    vm.episodes = [];
-    vm.langs    = [];
+    vm.show      = {};
+    vm.episodes  = [];
+    vm.langs     = [];
+    vm.subtitles = null;
     vm.selectedSeason  = [];
     vm.selectedEpisode = {};
-    vm.selectedLang    = "";
+    vm.selectedLang    = "es";
     vm.selectedTorrentIndex = 0;
     vm.torrents = [];
     vm.showMagnet = false;
     vm.loading    = false;
 
     vm.space = space;
+    vm.areSubsLoaded = areSubsLoaded;
     vm.setEpisode = setEpisode;
     vm.scrollBack = scrollBack;
     vm.loadSubtitles = loadSubtitles;
@@ -35,11 +37,15 @@
       return angular.toJson(obj, true);
     }
 
+    function areSubsLoaded(){
+      return angular.isObject(vm.subtitles);
+    }
+
     function setEpisode(ep){
       vm.selectedEpisode = ep;
       vm.showMagnet = false;
       vm.videoUrl   = "";
-      vm.subtitles  = [];
+      loadSubtitles(ep);
 
       var el = $document[0].querySelector(".episodes");
       angular.element(el).scrollLeft($window.innerWidth, 400);
@@ -63,9 +69,8 @@
     }
 
     function loadSubtitles(episode){
-      vm.langs = $rootScope.langs;
       vm.loading   = true;
-      vm.subtitles = [];
+      vm.subtitles = null;
 
       ShowService.getSubtitles(vm.id, episode)
       .then(function onSubtitles(subs) {
@@ -88,12 +93,16 @@
         vm.episodes = show.parsedEpisodes;
         vm.selectedSeason = vm.episodes[0].episodes;
         vm.selectedEpisode = vm.selectedSeason[0];
+        loadSubtitles(vm.selectedEpisode);
       });
       ShowService.getTorrents().then(function(torrents){
         vm.torrents = torrents;
       });
       ShowService.setLastWatched(vm.id);
-
+      var off = $rootScope.$on("langsLoaded", function(ev, langs) {
+        vm.langs = langs;
+      });
+      vm.$onDestroy = function() { off(); }
       socket.once('connect', function(){
         $log.debug("ShowController: conectado a socket.io");
       });
