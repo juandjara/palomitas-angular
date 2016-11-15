@@ -91,12 +91,15 @@
           <li>Obtener enlace de video desde esta pagina o desde el
             <a target="_blank" href="https://palomitas-dl.fuken.xyz">descargador</a>
           </li>
+          <li>Ir al <a target="_blank" href="videojs/">reproductor</a>
+          <li>Pegar enlace de video y pulsar el boton verde de 'Reproducir'</li>
           <li>Obtener subtitulos desde esta pagina.
               Copiar enlace de subtitulos en formato VTT</li>
-          <li>Ir al <a target="_blank" href="videojs/">reproductor</a>
-          <li>Pegar los enlaces de subtitulos y video cada uno en su lugar
-              (solo marcar el checkbox si el video ha sido convertido al formato HLS)</li>
-          <li>Pulsar el botón grande y verde y disfrutar del espect&aacute;lo.</li>
+          <li>En el <a target="_blank" href="videojs/">reproductor</a> puedes
+              añadir todos los subtitulos que quieras
+              En la seccion de 'Añadir subtitulos' escribiendo
+              el enlace de los subtiutlos (debe ser en formato vtt)
+              y el nombre de los subtitulos (opcional)</li>
         </ol>
         <p><strong>Bonus: </strong>tambien puede usar el enlace de video
            para ver el video en un reproductor como <strong>VLC</strong>
@@ -135,9 +138,13 @@
         <li class="list-group-item" ng-repeat="sub in vm.subtitles[vm.selectedLang]"
             style="display: flex; align-items: center">
           <div style="flex: 0 1 65%">
-            <p class="pre-wrap">{{sub.subFilename}}</p>
-            Descargar en <a class="pre-wrap" ng-href="{{sub.links.srt}}">srt</a>
-            o <a class="pre-wrap" ng-href="{{sub.links.vtt}}">vtt</a>
+            <p class="pre-wrap">{{sub.subFilename.replace(".srt", "")}}</p>
+            <p>
+              Descargar en <a class="pre-wrap" ng-href="{{sub.links.srt}}">formato srt</a>
+            </p>
+            <p>
+              Descargar en <a class="pre-wrap" ng-href="{{sub.links.vtt}}">formato vtt</a>
+            </p>
           </div>
           <div style="flex: 1 0 35%; margin-left: 1em">
             <p>
