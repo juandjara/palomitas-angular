@@ -99,13 +99,16 @@
         vm.torrents = torrents;
       });
       ShowService.setLastWatched(vm.id);
-      var off = $rootScope.$on("langsLoaded", function(ev, langs) {
-        vm.langs = langs;
-      });
-      vm.$onDestroy = function() { off(); }
       socket.once('connect', function(){
         $log.debug("ShowController: conectado a socket.io");
       });
+      vm.langs = $rootScope.langs;
+      if(!vm.langs) {
+        var off = $rootScope.$on("langsLoaded", function() {
+          vm.langs = $rootScope.langs;
+        });
+        vm.$onDestroy = function() { off(); }
+      }
     }
 
   }

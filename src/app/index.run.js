@@ -11,6 +11,7 @@
     var api = "https://sub-down.fuken.xyz";
     var url = api+"/weblangs.json";
     $http.get(url).then(function(res){
+      $rootScope.langs = res.data;
       $rootScope.$emit("langsLoaded", res.data)
     });
   }
